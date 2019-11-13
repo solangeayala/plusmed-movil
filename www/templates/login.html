@@ -1,0 +1,42 @@
+<ion-modal-view>
+    <ion-content>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-t-190 p-b-30">
+                    <form ng-submit="login(form)" class="login100-form validate-form">
+                        <div class="login100-form-avatar">
+                            <img src="img/doctorlogo.png" alt="AVATAR">
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-10" data-validate="Username is required">
+                            <input ng-model="loginData.documento" class="input100 especial" type="text" name="username" placeholder="N° de Documento">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+							<i style="font-size: 18px; margin-top: 5px;" class="fa fa-user"></i>
+						</span>
+                        </div>
+
+                        <div ng-click="checkfinger()" class="flex-row wrap-input100 validate-input m-b-10" data-validate="Password is required">
+                            <input style="margin-bottom: -20px; flex: 1; padding-right: 70px !important;" id="idPassword" ng-model="loginData.password" class="input100 especial" type="password" name="pass" placeholder="Contraseña">
+                            <a style="z-index: 20000; margin-top: -20px; width: 45px; float: right;" ng-click="mostrarPass()">
+                                <i style="color: #999999; font-size: 18px; margin-top: 5px;" id="iconoPass" class="fa fa-eye"></i>
+                            </a>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i style="font-size: 18px; margin-top: 5px;" class="fa fa-lock"></i>
+                            </span>
+                        </div>
+
+                        <div class="container-login100-form-btn p-t-10">
+                            <button type="submit" class="login100-form-btn">
+							    Iniciar Sesión
+						    </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,89 @@
+<ion-view view-title="Extracto de cuenta">
+    <ion-content>
+        <div style="height: 95px; text-align: center; padding: 10px 10px; background: #1E1E23;">
+
+        </div>
+
+        <div class="cuenta-card-container">
+            <div id="card" style="height: auto !important">
+                <div>
+                    <h4 class="card-nombre" style="margin-bottom: 14px;">{{selected.ahorro.nombre}}</h4>
+                    <h5 class="card-numero">N° Cuenta: {{selected.ahorro.numero}}</h5>
+                </div>
+                <div class="row card-saldos">
+                    <div class="col-12" style="padding: 0px">
+                        <h5 class="card-numero" style="margin-bottom: 7px">Saldo Actual</h5>
+                        <h5 class="card-nombre" ng-show="selected.ahorro.idMoneda == '1'">{{selected.ahorro.saldoActual | currency :'Gs. ': 0}}</h5>
+                        <h5 class="card-nombre" ng-show="selected.ahorro.idMoneda != '1'">{{selected.ahorro.saldoActual | currency :'USD. ': 2}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-click="abrirModal()" class="card card-movimiento card-fechas">
+            <div class="row row-movimiento">
+                <div class="col-5 col-fechas">
+                    <h5 class="text-fechas">Fecha Desde</h5>
+                    <div>
+                        <h5 class="fecha-input">{{trx.fechaDesde | date: "dd/MM/yyyy"}}</h5>
+                        <!--<input type="date" id="fechaDesde" ng-model="trx.fechaDesde" placeholder="{{trx.fechaDesde}}" class="fecha-input" />-->
+                    </div>
+                </div>
+                <div class="col-2">
+                    <i class="entre-fechas fas fa-ellipsis-v"></i>
+                </div>
+                <div class="col-5 col-fechas">
+                    <h5 class="text-fechas">Fecha Hasta</h5>
+                    <div>
+                        <h5 class="fecha-input">{{trx.fechaHasta | date: "dd/MM/yyyy"}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!extractoAhorro || (extractoAhorro.length == 0)">
+            <div class="card card-movimiento card-fechas">
+                <div class="row row-movimiento">
+                    <div class="col-12 col-fechas">
+                        <h5 class="text-fechas">No existen movimientos</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-movimientos" ng-if="extractoAhorro.length > 0">
+            <div class="col-12 titulo-movimientos">
+                <h5 class="text-fechas">Movimientos confirmados</h5>
+            </div>
+            <div ng-repeat="movimiento in extractoAhorro " ng-show="movimiento.importe != 'SALDO ANTERIOR'" class="card card-movimiento">
+                <div class="row row-movimiento">
+                    <div class="col-6 col-detalles">
+                        <h5 class="detalle-movimiento">Mov.: <b>{{movimiento.idMovimiento}}</b></h5>
+                        <h5 class="detalle-movimiento">Compr.: <b>{{movimiento.comprobante}}</b></h5>
+                        <h5 class="detalle-movimiento" style="color: grey !important">Fecha: <b>{{movimiento.fechaMovimiento}}</b></h5>
+                    </div>
+                    <div class="col-6 col-monto">
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'D' && movimiento.idMoneda == 2">
+                            <label class="label label-debito">
+                                    <i class="fas fa-arrow-down"></i>US$. {{movimiento.importe}}
+                                </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'D' && movimiento.idMoneda == 1">
+                            <label class="label label-debito">
+                                        <i class="fas fa-arrow-down"></i>Gs. {{movimiento.importe}}</td>
+                                    </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'C' && movimiento.idMoneda == 2">
+                            <label class="label label-credito">
+                                    <i class="fas fa-arrow-up"></i>US$. {{movimiento.importe}}</td>
+                                </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'C' && movimiento.idMoneda == 1">
+                            <label class="label label-credito">
+                                    <i class="fas fa-arrow-up"></i>Gs. {{movimiento.importe}}</td>
+                                </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

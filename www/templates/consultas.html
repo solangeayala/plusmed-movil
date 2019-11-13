@@ -1,0 +1,51 @@
+<ion-view view-title="Consultas">
+    <ion-content>
+        <div style="margin-top: 20px;">
+            <div ng-show="ctaCte.length> 0" class="aspect-tab" ui-sref="menu.consultas-ctacte">
+                <input class="aspect-input">
+                <label class="aspect-label"></label>
+                <div class="aspect-content card-main">
+                    <div class="aspect-info">
+                        <span class="aspect-name cuenta-main">Cuenta Corriente</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="prestamo.length > 0" class="aspect-tab" ui-sref="menu.consultas-prestamo">
+                <input class="aspect-input">
+                <label class="aspect-label"></label>
+                <div class="aspect-content card-main">
+                    <div class="aspect-info">
+                        <span class="aspect-name cuenta-main">Préstamos</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="ahorro.length > 0" class="aspect-tab" ui-sref="menu.consultas-ahorro">
+                <input class="aspect-input">
+                <label class="aspect-label"></label>
+                <div class="aspect-content card-main">
+                    <div class="aspect-info">
+                        <span class="aspect-name cuenta-main">Caja de Ahorro</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="ahorroPlazoFijo.length > 0" class="aspect-tab" ui-sref="menu.consultas-ahorrofijo">
+                <input class="aspect-input">
+                <label class="aspect-label"></label>
+                <div class="aspect-content card-main">
+                    <div class="aspect-info">
+                        <span class="aspect-name cuenta-main">Ahorro a Plazo Fijo</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="capital.length > 0" class="aspect-tab" ui-sref="menu.consultas-capital">
+                <input class="aspect-input">
+                <label class="aspect-label"></label>
+                <div class="aspect-content card-main">
+                    <div class="aspect-info">
+                        <span class="aspect-name cuenta-main">Capital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,84 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="nav-credit">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menu"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-stable">
+            <img class="logo-menu" src="../img/doctorlogo.png">
+        </ion-header-bar>
+        <ion-content style="top: 140px !important">
+            <div class="raya-menu"></div>
+            <ion-list>
+                <ion-item menu-close ng-click="vista('menu.inicio')" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/home.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Inicio
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item menu-close ng-click="vista('menu.consultas')" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/avatar.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Pacientes
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item menu-close ng-click="vista('menu.consultas')" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/bank-account.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Fichas clínicas
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item menu-close ng-click="vista('menu.extractos')" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/invoice.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Turnos
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item menu-close ng-click="vista('menu.autogestion')" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/settings.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Configuraciones
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item menu-close ng-click="logout()" class="item-menu">
+                    <div class="row">
+                        <div class="col col-2">
+                            <img src="../img/logout.png" style="width: 23px">
+                        </div>
+                        <div class="col col-item-menu">
+                            Cerrar sesión
+                        </div>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

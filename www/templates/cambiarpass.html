@@ -1,0 +1,58 @@
+<ion-view view-title="Cambiar contraseña">
+    <ion-content class="padding">
+        <div class="container-imagen">
+            <img src="../img/padlock.png" class="img-cambiar-pass">
+        </div>
+        <form class="form-cambiar-pass" name="formPassword" ng-submit="cambiarPass(formPassword)">
+            <div class="list">
+                <label class="item-input cambiar-pass-label">
+                    <span class="input-label label-pass">Contraseña actual</span>
+                </label>
+                <div style="border: 1px solid lightgray;">
+                    <input id="idPassword1" placeholder="Contraseña actual" class="input-cambiar-pass" type="password" name="actual" ng-model="datos.actual" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    <a style="z-index: 20000; margin-top: -35px; width: 35px; float: right;" ng-click="mostrarPass(1)">
+                        <i style="color: #999999; font-size: 18px; margin-top: 5px;" id="iconoPass1" class="fa fa-eye"></i>
+                    </a>
+                </div>
+                <!-- div para el error  -->
+                <div class="validation-error" ng-class="{'is-dirty':formPassword.actual.$dirty}" ng-messages="formPassword.actual.$error" role="alert">
+                    <div ng-messages-include="validation-errors.html"></div>
+                </div>
+
+                <label class="item-input  cambiar-pass-label">
+                    <span class="input-label label-pass">Contraseña nueva</span>
+                </label>
+                <div style="border: 1px solid lightgray;">
+                    <input id="idPassword2" placeholder="Contraseña nueva" class="input-cambiar-pass" type="password" name="password" ng-model="datos.nuevo" ng-minlength="8" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    <a style="z-index: 20000; margin-top: -35px; width: 35px; float: right;" ng-click="mostrarPass(2)">
+                        <i style="color: #999999; font-size: 18px; margin-top: 5px;" id="iconoPass2" class="fa fa-eye"></i>
+                    </a>
+                </div>
+                <!-- div para el error -->
+                <div class="validation-error" ng-class="{'is-dirty':formPassword.password.$dirty}" ng-messages="formPassword.password.$error" role="alert">
+                    <div ng-messages-include="validation-errors.html"></div>
+                </div>
+                <!-- div para el error -->
+
+                <label class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Repetir contraseña nueva</span>
+                </label>
+                <div style="border: 1px solid lightgray;">
+                    <input id="idPassword3" placeholder="Repetir contraseña nueva" class="input-cambiar-pass" type="password" name="passwordRep" ng-model="datos.confirmacion" ng-minlength="8" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    <a style="z-index: 20000; margin-top: -35px; width: 35px; float: right;" ng-click="mostrarPass(3)">
+                        <i style="color: #999999; font-size: 18px; margin-top: 5px;" id="iconoPass3" class="fa fa-eye"></i>
+                    </a>
+                </div>
+                <!-- div para el error -->
+                <div class="validation-error" ng-class="{'is-dirty':formPassword.passwordRep.$dirty}" ng-messages="formPassword.passwordRep.$error" role="alert">
+                    <div ng-messages-include="validation-errors.html"></div>
+                </div>
+                <!-- div para el error -->
+
+            </div>
+            <button type="submit" ng-disabled="formPassword.$invalid" class="login100-form-btn">
+                Cambiar contraseña
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

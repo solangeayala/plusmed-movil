@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css?family=Gudea&display=swap");
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url("../fonts/montserrat/Montserrat-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url("../fonts/montserrat/Montserrat-Bold.ttf");
+}
+
+@font-face {
+    font-family: "FontAwesome";
+    src: url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot");
+    src: url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf") format("truetype"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2") format("woff"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.raya {
+    height: 4px;
+    background: white;
+    margin: px 90px;
+    margin-left: 14%;
+    width: 70%;
+    margin-bottom: 14px;
+}
+
+.card-main {
+    height: 60px !important;
+}
+
+.nombre-main {
+    padding-top: 10px;
+}
+
+.detalles-cuenta {
+    display: block !important;
+    line-height: 23px !important;
+    font-size: 17px !important;
+    font-family: "Gudea", sans-serif !important;
+}
+
+.detalles-cuenta b {
+    color: grey;
+}
+
+.consulta-content {
+    margin-top: 15px !important;
+}
+
+.titulo-movimientos {
+    /*border-top: 1px solid lightgray;*/
+    margin: 12px 0px -10px 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+.col-detalles {
+    padding: 0px !important;
+    display: grid;
+    align-items: center;
+}
+
+.detalle-movimiento {
+    font-size: 15px;
+    color: #4c4c4c;
+    font-family: "Gudea", sans-serif;
+}
+
+.container-movimientos {
+    margin-bottom: 20px !important;
+}
+
+.fecha-input {
+    text-align: center;
+    /* padding: 10px; */
+    margin: 5px 0px;
+    font-size: 18px !important;
+    font-family: "Gudea", sans-serif;
+    width: 100%;
+    background: transparent;
+    border-bottom: 2px solid #24803e !important;
+    border: 0px;
+}
+
+.card-fechas {
+    margin: 22px !important;
+}
+
+.text-fechas {
+    text-transform: uppercase;
+    color: gray;
+}
+
+.entre-fechas {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    color: lightgray;
+}
+
+.col-fechas {
+    text-align: center;
+}
+
+.aspect-content {
+    margin: 25px 0 0;
+    font-family: "Gudea", sans-serif !important;
+}
+
+.aspect-content * {
+    box-sizing: border-box;
+}
+
+.aspect-tab {
+    position: relative;
+    width: 93%;
+    max-width: 1000px;
+    margin: 0 auto 10px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    border-left: 3px solid #09b2bd;
+    opacity: 1;
+    transition: box-shadow 0.2s, opacity 0.4s;
+}
+
+.aspect-tab:hover {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.11);
+}
+
+.aspect-input {
+    display: none;
+}
+
+.aspect-input:checked~.aspect-content+.aspect-tab-content {
+    max-height: 3000px;
+}
+
+.aspect-input:checked~.aspect-content:after {
+    transform: rotate(0);
+}
+
+.aspect-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-height: 80px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.aspect-content {
+    position: relative;
+    height: 80px;
+    margin: 0;
+    padding: 0 87px 0 30px;
+    font-size: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.aspect-content:before,
+.aspect-content:after {
+    content: "\f105";
+    font-family: "FontAwesome";
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.aspect-content:before {
+    height: 100%;
+}
+
+.aspect-content:after {
+    position: absolute;
+    width: 24px;
+    height: 100%;
+    right: 10px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTI0IDI0SDBWMGgyNHoiIG9wYWNpdHk9Ii44NyIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNBOUFDQUYiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTE1Ljg4IDE1LjI5TDEyIDExLjQxbC0zLjg4IDMuODhhLjk5Ni45OTYgMCAxIDEtMS40MS0xLjQxbDQuNTktNC41OWEuOTk2Ljk5NiAwIDAgMSAxLjQxIDBsNC41OSA0LjU5Yy4zOS4zOS4zOSAxLjAyIDAgMS40MS0uMzkuMzgtMS4wMy4zOS0xLjQyIDB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=");
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(90deg);
+}
+
+.aspect-name {
+    width: 90%;
+    font-size: 19px;
+    margin-left: 0px;
+    font-weight: 500;
+    color: #1e1e23;
+    white-space: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.aspect-stat {
+    width: 40%;
+    text-align: right;
+}
+
+.all-opinions,
+.aspect-name {
+    font-size: 20px !important;
+    line-height: 22px;
+}
+
+.cuenta-main {
+    font-size: 20px !important;
+    padding-top: 10px !important;
+    display: inline-block;
+}
+
+.all-opinions {
+    color: #5d5d5d;
+    text-align: left;
+}
+
+.aspect-content+.aspect-tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+}
+
+.aspect-content>div,
+.aspect-stat>div {
+    display: grid;
+}
+
+.aspect-content>div {
+    vertical-align: middle;
+}
+
+.positive-count,
+.negative-count,
+.neutral-count {
+    display: inline-block;
+    margin: 0 0 0 20px;
+    padding-left: 26px;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    line-height: 20px;
+    color: #363636;
+}
+
+.positive-count {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiM3RUQzMjEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDE4LjU3MWMtNC43MjYgMC04LjU3MS0zLjg0NS04LjU3MS04LjU3MSAwLTQuNzI2IDMuODQ1LTguNTcxIDguNTcxLTguNTcxIDQuNzI2IDAgOC41NzEgMy44NDUgOC41NzEgOC41NzEgMCA0LjcyNi0zLjg0NSA4LjU3MS04LjU3MSA4LjU3MXpNMjAgMTBjMCA1LjUxNC00LjQ4NiAxMC0xMCAxMFMwIDE1LjUxNCAwIDEwIDQuNDg2IDAgMTAgMHMxMCA0LjQ4NiAxMCAxMHpNNSAxMS40MjdhNSA1IDAgMCAwIDEwIDAgLjcxNC43MTQgMCAxIDAtMS40MjkgMCAzLjU3MSAzLjU3MSAwIDAgMS03LjE0MiAwIC43MTQuNzE0IDAgMSAwLTEuNDI5IDB6bTEuMDcxLTVhMS4wNzEgMS4wNzEgMCAxIDAgMCAyLjE0MyAxLjA3MSAxLjA3MSAwIDAgMCAwLTIuMTQzem03Ljg1OCAwYTEuMDcxIDEuMDcxIDAgMSAwIDAgMi4xNDMgMS4wNzEgMS4wNzEgMCAwIDAgMC0yLjE0M3oiLz4KPC9zdmc+Cg==");
+}
+
+.negative-count {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNGRjZFMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDE4LjU3MWMtNC43MjYgMC04LjU3MS0zLjg0NS04LjU3MS04LjU3MSAwLTQuNzI2IDMuODQ1LTguNTcxIDguNTcxLTguNTcxIDQuNzI2IDAgOC41NzEgMy44NDUgOC41NzEgOC41NzEgMCA0LjcyNi0zLjg0NSA4LjU3MS04LjU3MSA4LjU3MXpNMjAgMTBjMCA1LjUxNC00LjQ4NiAxMC0xMCAxMFMwIDE1LjUxNCAwIDEwIDQuNDg2IDAgMTAgMHMxMCA0LjQ4NiAxMCAxMHpNNSAxNC45OThhLjcxNC43MTQgMCAwIDAgMS40MjkgMCAzLjU3MSAzLjU3MSAwIDAgMSA3LjE0MiAwIC43MTQuNzE0IDAgMSAwIDEuNDI5IDAgNSA1IDAgMSAwLTEwIDB6bTEuMDcxLTguNTdhMS4wNzEgMS4wNzEgMCAxIDAgMCAyLjE0MiAxLjA3MSAxLjA3MSAwIDAgMCAwLTIuMTQzem03Ljg1OCAwYTEuMDcxIDEuMDcxIDAgMSAwIDAgMi4xNDIgMS4wNzEgMS4wNzEgMCAwIDAgMC0yLjE0M3oiLz4KPC9zdmc+Cg==");
+}
+
+.neutral-count {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNCQUMyRDYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDE4LjU3MWMtNC43MjYgMC04LjU3MS0zLjg0NS04LjU3MS04LjU3MSAwLTQuNzI2IDMuODQ1LTguNTcxIDguNTcxLTguNTcxIDQuNzI2IDAgOC41NzEgMy44NDUgOC41NzEgOC41NzEgMCA0LjcyNi0zLjg0NSA4LjU3MS04LjU3MSA4LjU3MXpNMjAgMTBjMCA1LjUxNC00LjQ4NiAxMC0xMCAxMFMwIDE1LjUxNCAwIDEwIDQuNDg2IDAgMTAgMHMxMCA0LjQ4NiAxMCAxMHpNNS43MTQgMTEuNDI3YS43MTQuNzE0IDAgMSAwIDAgMS40MjloOC41NzJhLjcxNC43MTQgMCAxIDAgMC0xLjQyOUg1LjcxNHptLjM1Ny01YTEuMDcxIDEuMDcxIDAgMSAwIDAgMi4xNDMgMS4wNzEgMS4wNzEgMCAwIDAgMC0yLjE0M3ptNy44NTggMGExLjA3MSAxLjA3MSAwIDEgMCAwIDIuMTQzIDEuMDcxIDEuMDcxIDAgMCAwIDAtMi4xNDN6Ii8+Cjwvc3ZnPgo=");
+}
+
+.aspect-info {
+    width: 60%;
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.aspect-info:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-movimiento {
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    border: 0px !important;
+    padding: 10px !important;
+    margin-bottom: 0px !important;
+    margin-top: 11px !important;
+}
+
+.row-movimiento {
+    margin: 0px !important;
+}
+
+.label-credito {
+    background: #9acca8;
+    border-radius: 19px;
+    padding: 5px 8px;
+    font-weight: 600;
+}
+
+.label-credito i {
+    color: white;
+    margin-right: 10px;
+}
+
+.label-debito i {
+    color: white;
+    margin-right: 10px;
+}
+
+.label-debito {
+    background: #fdb8b8;
+    border-radius: 19px;
+    padding: 5px 8px;
+    font-weight: 600;
+}
+
+.col-monto {
+    text-align: right;
+    padding: 15px 0px !important;
+}
+
+@media screen and (max-width: 800px) {
+    .aspect-label {
+        max-height: 102px;
+    }
+    .aspect-content {
+        height: auto;
+        padding: 10px 40px 10px 19px;
+    }
+    .aspect-content:before {
+        display: none;
+    }
+    .aspect-content:after {
+        top: 0;
+    }
+    .aspect-content>div {
+        display: grid;
+        width: 100%;
+    }
+    .aspect-stat {
+        margin-top: 10px;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sentiment-wrapper>div {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+    .sentiment-wrapper>div:not(:first-child) {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .aspect-label {
+        max-height: 140px;
+    }
+    .aspect-stat>div {
+        display: block;
+        width: 100%;
+    }
+    .all-opinions {
+        margin-bottom: 10px;
+    }
+    .all-opinions+div>span:first-child {
+        margin: 0;
+    }
+}
+
+.cuenta-card-container {
+    text-align: center;
+}
+
+#card {
+    width: 320px;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-image: linear-gradient(120deg, #434244, #727275, #9d9d9e, #717171);
+    box-shadow: 0px 3px 3px #6b6868;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: -120px;
+    padding: 12px;
+    font-family: "Gudea", sans-serif !important;
+}
+
+.card-swipe {
+    margin-top: 10px !important;
+    height: 250px !important;
+}
+
+.card-nombre {
+    text-align: center;
+    font-family: "Gudea", sans-serif !important;
+    font-size: 21px;
+    color: white;
+    font-weight: 600;
+}
+
+.card-saldos {
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.card-numero {
+    text-align: center;
+    font-family: "Gudea", sans-serif !important;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+#card-date {
+    width: 120px;
+    padding: 0px 0px 0px 0px;
+    line-height: 1px;
+}
+
+#card-cvv {
+    width: 190px;
+    height: 38px;
+    margin: -50px 0px 0px 140px;
+    line-height: 1px;
+    text-align: right;
+}
+
+#name {
+    width: 290px;
+    height: 30px;
+    padding: -30px 0px 0px 0px;
+    margin-top: -10px;
+}
+
+.especial-main {
+    margin-top: 10px;
+    height: 45px !important;
+    padding-left: 50px !important;
+    border: 1px solid #4accb1 !important;
+    font-size: 18px !important;
+}

@@ -1,0 +1,100 @@
+<ion-view view-title="Extracto de Préstamo">
+    <ion-content>
+        <div style="height: 110px; text-align: center; padding: 10px 10px; background: #1E1E23;">
+
+        </div>
+
+        <div class="cuenta-card-container">
+            <div id="card" style="height: auto !important">
+                <div>
+                    <h4 class="card-nombre" style="margin-bottom: 14px;">{{selected.prestamo.nombre}}</h4>
+                    <h5 class="card-numero">N° Cuenta: {{selected.prestamo.numero}}</h5>
+                </div>
+                <div class="row card-saldos" style="margin-top: 0px !important">
+                    <div class="col-12" style="padding: 0px">
+                        <h5 class="card-numero" style="margin-bottom: 7px">Saldo Actual</h5>
+                        <h5 class="card-nombre" ng-show="selected.prestamo.idMoneda == '1'">{{(selected.prestamo.capital - selected.prestamo.pago)| currency :'Gs. ': 0}}</h5>
+                        <h5 class="card-nombre" ng-show="selected.prestamo.idMoneda != '1'">{{(selected.prestamo.capital - selected.prestamo.pago)| currency :'USD. ': 2}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-movimiento card-fechas">
+            <div class="row row-movimiento">
+                <div class="col-12 col-fechas">
+                    <h5 class="text-fechas">Seleccionar documento</h5>
+                    <div>
+                        <select class="fecha-input" ng-model="selected.pagare" ng-options="s as s.nroPagare for s in pagares" ng-change="update()"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ion-slides options="options" ng-if="(pagaresSeleccionados.length > 0) && (pagaresSeleccionados[0].numero != 'TODOS')" style="height: auto !important;">
+            <ion-slide-page class="page-slide" ng-repeat="pagare in pagaresSeleccionados" ng-if="pagare.nroPagare != 'TODOS'">
+                <div class=" prev-slide ">
+                    <i class="fas fa-chevron-left "></i>
+                </div>
+                <div class="sig-slide ">
+                    <i class="fas fa-chevron-right "></i>
+                </div>
+                <div class="col-12 col-detalles ">
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento ">Documento N°: <b>{{pagare.nroPagare}}</b></h5>
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento ">Saldo: <b>{{pagare.capital - pagare.amortizado | currency: 'Gs. ':0}}</b></h5>
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento ">Fecha de Emisión: <b>{{pagare.fechaEmision}}</b></h5>
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento ">Fecha de Vencimiento: <b>{{pagare.fechaVencimiento}}</b></h5>
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento " ng-show="pagare.interesPagoHasta !='00/00/0000' ">Int. a Pag. al: <b>{{pagare.interesPagoHasta}}</b></h5>
+                    <h5 ng-cloak ng-if="pagare.nroPagare !='TODOS' " class="detalle-movimiento " ng-show="pagare.interesPagoHasta=='00/00/0000' ">Int. a Pag. al: <b>-</b></h5>
+                </div>
+            </ion-slide-page>
+        </ion-slides>
+
+        <div ng-if="!extractoPrestamo && extractoPrestamo.length==0 ">
+            <div class="card card-movimiento card-fechas ">
+                <div class="row row-movimiento ">
+                    <div class="col-12 col-fechas ">
+                        <h5 class="text-fechas ">No existen movimientos</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-movimientos " ng-if="extractoPrestamo && extractoPrestamo.length> 0">
+            <div class="col-12 titulo-movimientos">
+                <h5 class="text-fechas">Movimientos</h5>
+            </div>
+            <div ng-repeat="movimiento in extractoPrestamo" class="card card-movimiento">
+                <div class="row row-movimiento">
+                    <div class="col-6 col-detalles">
+                        <h5 class="detalle-movimiento">Tipo: <b>{{movimiento.descripcionMovimiento}}</b></h5>
+                        <h5 class="detalle-movimiento">Pagaré.: <b>{{movimiento.pagare}}</b></h5>
+                        <h5 class="detalle-movimiento" style="color: grey !important">Fecha: <b>{{movimiento.fecha | date: "dd/MM/yyyy"}}</b></h5>
+                    </div>
+                    <div class="col-6 col-monto">
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'D' && selected.prestamo.idMoneda == 2">
+                            <label class="label label-debito">
+                                    <i class="fas fa-arrow-down"></i>US$. {{movimiento.importe}}
+                                </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'D' && selected.prestamo.idMoneda == 1">
+                            <label class="label label-debito">
+                                        <i class="fas fa-arrow-down"></i>Gs. {{movimiento.importe}}</td>
+                                    </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'C' && selected.prestamo.idMoneda == 2">
+                            <label class="label label-credito">
+                                    <i class="fas fa-arrow-up"></i>US$. {{movimiento.importe}}</td>
+                                </label>
+                        </div>
+                        <div ng-cloak style="text-align: right" ng-show="movimiento.tipoMovimiento == 'C' && selected.prestamo.idMoneda == 1">
+                            <label class="label label-credito">
+                                    <i class="fas fa-arrow-up"></i>Gs. {{movimiento.importe}}</td>
+                                </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

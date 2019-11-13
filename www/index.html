@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *;
+    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+    style-src  'self' 'unsafe-inline' *">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+    <link rel="stylesheet" href="lib/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/swiper/dist/css/swiper.min.css"></script>
+    <link href="css/login-style.css" rel="stylesheet">
+    <link href="css/menu-style.css" rel="stylesheet">
+    <link href="css/header-style.css" rel="stylesheet">
+    <link href="css/cuentas-style.css" rel="stylesheet">
+    <link href="css/extractos-style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/ionic-native-transitions/dist/ionic-native-transitions.min.js"></script>
+    <script src="lib/ng-cordova/dist/ng-cordova.min.js"></script>
+    <script src="lib/ng-storage/ngStorage.min.js"></script>
+    <script src="lib/ng-idle/angular-idle.min.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="lib/swiper/dist/js/swiper.min.js"></script>
+    <script src="lib/angular-i18n/angular-locale_es-py.js"></script>
+
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- otros -->
+    <script src="js/app.js"></script>
+    <script src="js/constantes.js"></script>
+
+
+    <!-- services -->
+    <script src="js/services/authService.js"></script>
+    <script src="js/services/movimientoService.js"></script>
+    <script src="js/services/cuentaService.js"></script>
+
+    <!-- controllers -->
+    <script src="js/controllers/appCtrl.js"></script>
+    <script src="js/utiles.js"></script>
+    <script src="js/controllers/inicioCtrl.js"></script>
+    <script src="js/controllers/cuentasCtrl.js"></script>
+    <script src="js/controllers/extractosCtrl.js"></script>
+    <script src="js/controllers/autogestionCtrl.js"></script>
+    <script src="js/controllers/cambiarpassCtrl.js"></script>
+    <script src="js/controllers/extractos/ctacte.js"></script>
+    <script src="js/controllers/extractos/ahorro.js"></script>
+    <script src="js/controllers/extractos/ahorrofijo.js"></script>
+    <script src="js/controllers/extractos/prestamos.js"></script>
+    <script src="js/controllers/extractos/capital.js"></script>
+    <script src="js/controllers/extractos/cheques-rechazados.js"></script>
+
+
+
+
+</head>
+
+<body ng-app="plusmed">
+    <ion-nav-view name="main"></ion-nav-view>
+</body>
+
+<script id="templates/modal-fechas.html" type="text/ng-template">
+    <ion-modal-view class="modal-bordeado">
+        <ion-header-bar class="bar">
+            <h1 class="title" style="border-bottom: 2px solid green;padding-bottom: 10px;">Seleccionar fechas</h1>
+            <button class="button button-clear button-primary" ng-click="cerrarModal()"><i style="color: black" class="fas fa-times"></i></button>
+        </ion-header-bar>
+        <ion-content overflow-scroll="false" class="padding">
+            <div class="list list-descargar">
+                <div style="margin-top: 20px;padding-left: 10px;">
+                    <h4>Fecha Inicio:
+                        <input type="date" ng-change="formatearFechaDesde()" class="input-fecha-extracto" ng-model="trx.fechaDesde" placeholder="dd/mm/yyyy">
+                    </h4>
+                    <h4>Fecha Fin:
+                        <input type="date" ng-change="formatearFechaHasta()" style="margin-left: 28px !important;" class="input-fecha-extracto" ng-model="trx.fechaHasta" placeholder="dd/mm/yyyy">
+                    </h4>
+                </div>
+                <div style="text-align: center">
+                    <button class="button-descargar" ng-click="update()">Buscar</button>
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="templates/modal.html" type="text/ng-template">
+    <ion-modal-view class="modal-bordeado">
+        <ion-header-bar class="bar">
+            <h1 class="title" style="border-bottom: 2px solid green;padding-bottom: 10px;">Descargar extracto</h1>
+            <button class="button button-clear button-primary" ng-click="cerrarModal()"><i style="color: black" class="fas fa-times"></i></button>
+        </ion-header-bar>
+        <ion-content overflow-scroll="false" class="padding">
+            <div class="list list-descargar">
+                <div style="margin-top: 9px;padding-left: 10px; ">
+                    <h4>Cuenta: <b>{{cuenta.numero}}</b></h4>
+                    <h4>Nombre: <b>{{cuenta.nombre}}</b></h4>
+                    <h4>Moneda: <b>{{cuenta.moneda}}</b></h4>
+                    <div ng-if="(tipo == 'CTACTE') || (tipo == 'AHORRO')">
+                        <h4>Fecha Inicio:
+                            <input type="date" ng-change="formatearFechaDesde()" class="input-fecha-extracto" ng-model="trx.fechaDesde" placeholder="dd/mm/yyyy">
+                        </h4>
+                        <h4>Fecha Fin:
+                            <input type="date" ng-change="formatearFechaHasta()" style="margin-left: 28px !important;" class="input-fecha-extracto" ng-model="trx.fechaHasta" placeholder="dd/mm/yyyy">
+                        </h4>
+                    </div>
+                    <div ng-if="tipo == 'CREDITO'">
+                        <h4>Pagaré:
+                            <select style="padding: 10px !important;" class="input-fecha-extracto" ng-model="cuenta.pagare" ng-init="cuenta.pagare = cuenta.pagares[0]" ng-options="s for s in cuenta.pagares"></select>
+                        </h4>
+                    </div>
+                    <div ng-if="tipo == 'PLAZO_FIJO'">
+                        <h4>Documento:
+                            <select style="padding: 10px !important;" class="input-fecha-extracto" ng-model="cuenta.nroDocumento" ng-init="cuenta.nroDocumento = cuenta.documentos[0]" ng-options="s for s in cuenta.documentos"></select>
+                        </h4>
+                    </div>
+                </div>
+                <div style="text-align: center">
+                    <button ng-if="tipo == 'CTACTE'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'CTACTE')">Descargar</button>
+                    <button ng-if="tipo == 'CREDITO'" class="button-descargar" ng-click="descargarExtracto(pres, cuenta, 'CREDITO')">Descargar</button>
+                    <button ng-if="tipo == 'AHORRO'" class="button-descargar" ng-click="descargarExtracto(pres, cuenta, 'AHORRO')">Descargar</button>
+                    <button ng-if="tipo == 'CAPITAL'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'CAPITAL')">Descargar</button>
+                    <button ng-if="tipo == 'PLAZO_FIJO'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'PLAZO_FIJO')">Descargar</button>
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="validation-errors.html" type="text/ng-template">
+    <div class="error" ng-message="required">
+        <i class="ion-information-circled"></i> Campo requerido.
+    </div>
+    <div class="error" ng-message="minlength">
+        <i class="ion-information-circled"></i> Se requieren al menos 8 caracteres.
+    </div>
+</script>
+
+</html>

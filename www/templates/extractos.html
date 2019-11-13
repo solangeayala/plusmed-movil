@@ -1,0 +1,131 @@
+<ion-view view-title="Extractos">
+    <ion-content>
+        <div>
+            <div ng-show="ctaCte.length> 0" class="card card-extracto">
+                <ul class="extracto-ul">
+                    <li class="extracto-li">
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <h2 class="extracto-h2">Cuenta Corriente</h2>
+                        <div id="cuenta-transition">
+                            <div ng-repeat="cc in ctaCte" class="card-cuenta-extracto">
+                                <div class="row row-movimiento" style="padding: 0px;">
+                                    <div class="col col-extractos">
+                                        <h4 class="extracto-h4">Cuenta: <b>{{cc.numero}}</b></h4>
+                                        <h4 class="extracto-h4">Nombre: <b>{{cc.nombre}}</b></h4>
+                                        <h4 class="extracto-h4">Moneda: <b>{{cc.moneda}}</b></h4>
+                                    </div>
+                                    <div class="col col-2" style="padding-top: 6%;">
+                                        <button class="btn btn-light" ng-click="abrirModal(cc, 'CTACTE')">
+                                                        <img src="../img/download.png" style="width: 20px">
+                                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="prestamo.length > 0" class="card card-extracto">
+                <ul class="extracto-ul">
+                    <li class="extracto-li">
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <h2 class="extracto-h2">Préstamos</h2>
+                        <div id="cuenta-transition">
+                            <div ng-repeat="pr in prestamo" class="card-cuenta-extracto">
+                                <div class="row row-movimiento" style="padding: 0px;">
+                                    <div class="col col-extractos">
+                                        <h4 class="extracto-h4">Cuenta: <b>{{pr.numero}}</b></h4>
+                                        <h4 class="extracto-h4">Nombre: <b>{{pr.nombre}}</b></h4>
+                                        <h4 class="extracto-h4">Moneda: <b>{{pr.moneda}}</b></h4>
+                                    </div>
+                                    <div class="col col-2" style="padding-top: 6%;">
+                                        <button class="btn btn-light" ng-click="abrirModal(pr, 'CREDITO')">
+                                                            <img src="../img/download.png" style="width: 20px">
+                                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="ahorro.length > 0" class="card card-extracto">
+                <ul class="extracto-ul">
+                    <li class="extracto-li">
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <h2 class="extracto-h2">Caja de Ahorro</h2>
+                        <div id="cuenta-transition">
+                            <div ng-repeat="ca in ahorro" class="card-cuenta-extracto">
+                                <div class="row row-movimiento" style="padding: 0px;">
+                                    <div class="col col-extractos">
+                                        <h4 class="extracto-h4">Cuenta: <b>{{ca.numero}}</b></h4>
+                                        <h4 class="extracto-h4">Nombre: <b>{{ca.nombre}}</b></h4>
+                                        <h4 class="extracto-h4">Moneda: <b>{{ca.moneda}}</b></h4>
+                                    </div>
+                                    <div class="col col-2" style="padding-top: 6%;">
+                                        <button class="btn btn-light" ng-click="abrirModal(ca, 'AHORRO')">
+                                            <img src="../img/download.png" style="width: 20px">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="ahorroPlazoFijo.length > 0" class="card card-extracto">
+                <ul class="extracto-ul">
+                    <li class="extracto-li">
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <h2 class="extracto-h2">Ahorro a Plazo Fijo</h2>
+                        <div id="cuenta-transition">
+                            <div ng-repeat="pf in ahorroPlazoFijo" class="card-cuenta-extracto">
+                                <div class="row row-movimiento" style="padding: 0px;">
+                                    <div class="col col-extractos">
+                                        <h4 class="extracto-h4">Cuenta: <b>{{pf.numero}}</b></h4>
+                                        <h4 class="extracto-h4">Nombre: <b>{{pf.nombre}}</b></h4>
+                                        <h4 class="extracto-h4">Moneda: <b>{{pf.moneda}}</b></h4>
+                                    </div>
+                                    <div class="col col-2" style="padding-top: 6%;">
+                                        <button class="btn btn-light" ng-click="abrirModal(pf, 'PLAZO_FIJO')">
+                                                <img src="../img/download.png" style="width: 20px">
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="capital.length > 0" class="card card-extracto">
+                <ul class="extracto-ul">
+                    <li class="extracto-li">
+                        <input type="checkbox" checked>
+                        <i></i>
+                        <h2 class="extracto-h2">Capital</h2>
+                        <div id="cuenta-transition">
+                            <div ng-repeat="cap in capital" class="card-cuenta-extracto">
+                                <div class="row row-movimiento" style="padding: 0px;">
+                                    <div class="col col-extractos">
+                                        <h4 class="extracto-h4">Cuenta: <b>{{cap.numero}}</b></h4>
+                                        <h4 class="extracto-h4">Nombre: <b>{{cap.nombre}}</b></h4>
+                                        <h4 class="extracto-h4">Moneda: <b>{{cap.moneda}}</b></h4>
+                                    </div>
+                                    <div class="col col-2" style="padding-top: 6%;">
+                                        <button class="btn btn-light" ng-click="abrirModal(cap, 'CAPITAL')">
+                                        <img src="../img/download.png" style="width: 20px">
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

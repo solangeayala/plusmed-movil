@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "FontAwesome";
+    src: url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot");
+    src: url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf") format("truetype"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff") format("woff"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2") format("woff"), url("../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.platform-android .bar .title {
+    font-size: 23px !important;
+    padding-top: 10px !important;
+    text-align: center !important;
+    height: auto;
+}
+
+.header-item {
+    left: 0 !important;
+}
+
+.ion-navicon:before {
+    content: "\f142";
+    font-family: "FontAwesome";
+}
+
+.bar .button.button-icon .icon:before,
+.bar .button.button-icon:before,
+.bar .button.button-icon.icon-left:before,
+.bar .button.button-icon.icon-right:before,
+.bar button.button-icon .icon:before,
+.bar button.button-icon:before,
+.bar button.button-icon.icon-left:before,
+.bar button.button-icon.icon-right:before {
+    /*vertical-align: top !important;*/
+    vertical-align: middle !important;
+    font-size: 28px !important;
+    line-height: 32px !important;
+    /*padding-top: 0px !important;*/
+    font-weight: 300 !important;
+}
+
+.bar .button.button-clear,
+.bar button.button-clear {
+    /*padding: 10px 10px !important;*/
+    color: white !important;
+}
+
+.has-header {
+    top: 63px !important;
+}
+
+@media (min--moz-device-pixel-ratio: 1.5),
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+(min-resolution: 1.5dppx) {
+    .bar {
+        border: none;
+        background-image: none !important;
+        background-position: bottom;
+        background-size: 100% 0px !important;
+        background-repeat: no-repeat;
+    }
+}
