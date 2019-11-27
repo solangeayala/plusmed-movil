@@ -37,7 +37,13 @@ app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
         $ionicLoading.show();
         $localStorage.fisioSeleccion = serv;
         $ionicLoading.hide();
-        $state.go('menu.nueva-ficha');
+        if ($localStorage.flagReservaFiltro == true) {
+            $localStorage.flagReservaFiltro == false;
+            $state.go('menu.filtro-fisio');
+        } else {
+            $state.go('menu.nueva-ficha');
+        }
+
     };
 
     $('#hideshow').on('click', function(event) {

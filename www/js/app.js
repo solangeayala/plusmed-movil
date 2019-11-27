@@ -50,7 +50,7 @@ angular.module('plusmed', [
                 $backView.go();
             } else {
                 $ionicPopup.show({
-                    title: '¿Salir de Credit-Union?',
+                    title: '¿Salir de Plusmed?',
                     buttons: [{
                         text: 'Cancelar',
                         type: 'button-cancelar waves-effect waves-light',
@@ -249,6 +249,20 @@ angular.module('plusmed', [
         }
     })
 
+    .state('menu.detalle-ficha', {
+        url: '/inicio/fichas/detalle',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/fichas/detalle-ficha.html',
+                controller: 'fichaDetalleCtrl'
+            }
+        }
+    })
+
     .state('menu.seleccion-paciente', {
         url: '/inicio/seleccion/paciente',
         cache: false,
@@ -278,30 +292,85 @@ angular.module('plusmed', [
     })
 
     .state('menu.seleccion-fisio', {
-            url: '/inicio/seleccion/fisio',
+        url: '/inicio/seleccion/fisio',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/seleccion-fisio.html',
+                controller: 'seleccionFisioCtrl'
+            }
+        }
+    })
+
+    .state('menu.filtro-fisio', {
+        url: '/inicio/filtro/fisio',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/filtro-fisio.html',
+                controller: 'filtroFisioCtrl'
+            }
+        }
+    })
+
+    .state('menu.filtro-cliente', {
+            url: '/inicio/filtro/cliente',
             cache: false,
             nativeTransitions: {
                 "type": "fade"
             },
             views: {
                 'menu': {
-                    templateUrl: 'templates/seleccion-fisio.html',
-                    controller: 'seleccionFisioCtrl'
+                    templateUrl: 'templates/filtro-cliente.html',
+                    controller: 'filtroClienteCtrl'
                 }
             }
         })
-        .state('menu.cambiarpass', {
-            url: '/inicio/cambiarpass',
+        .state('menu.turnos', {
+            url: '/inicio/turnos',
             cache: false,
             nativeTransitions: {
                 "type": "fade"
             },
             views: {
                 'menu': {
-                    templateUrl: 'templates/cambiarpass.html',
-                    controller: 'cambiarpassCtrl'
+                    templateUrl: 'templates/turnos/turnos.html',
+                    controller: 'turnosCtrl'
                 }
             }
         })
+        .state('menu.nuevo-turno', {
+            url: '/inicio/nuevo-turno',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/turnos/nuevo-turno.html',
+                    controller: 'nuevoTurnoCtrl'
+                }
+            }
+        })
+
+    .state('menu.cambiarpass', {
+        url: '/inicio/cambiarpass',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/cambiarpass.html',
+                controller: 'cambiarpassCtrl'
+            }
+        }
+    })
     $urlRouterProvider.otherwise('/app');
 });

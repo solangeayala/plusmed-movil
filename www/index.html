@@ -71,6 +71,8 @@
     <script src="js/controllers/cambiarpassCtrl.js"></script>
     <script src="js/controllers/seleccion-paciente.js"></script>
     <script src="js/controllers/seleccion-servicio.js"></script>
+    <script src="js/controllers/filtroFisio.js"></script>
+    <script src="js/controllers/filtroCliente.js"></script>
     <script src="js/controllers/seleccion-fisio.js"></script>
     <script src="js/controllers/extractos/ctacte.js"></script>
     <script src="js/controllers/extractos/ahorro.js"></script>
@@ -81,6 +83,10 @@
     <script src="js/controllers/pacientes/nuevo-paciente.js"></script>
     <script src="js/controllers/fichas/fichas.js"></script>
     <script src="js/controllers/fichas/nuevaFicha.js"></script>
+    <script src="js/controllers/fichas/detalleFicha.js"></script>
+    <script src="js/controllers/turnos/turnos.js"></script>
+    <script src="js/controllers/turnos/nuevoTurno.js"></script>
+
 
 
 
@@ -100,15 +106,15 @@
         <ion-content overflow-scroll="false" class="padding">
             <div class="list list-descargar">
                 <div style="margin-top: 20px;padding-left: 10px;">
-                    <h4>Fecha Inicio:
+                    <h4>Fecha Desde:
                         <input type="date" ng-change="formatearFechaDesde()" class="input-fecha-extracto" ng-model="trx.fechaDesde" placeholder="dd/mm/yyyy">
                     </h4>
-                    <h4>Fecha Fin:
+                    <h4>Fecha Hasta:
                         <input type="date" ng-change="formatearFechaHasta()" style="margin-left: 28px !important;" class="input-fecha-extracto" ng-model="trx.fechaHasta" placeholder="dd/mm/yyyy">
                     </h4>
                 </div>
                 <div style="text-align: center">
-                    <button class="button-credit" ng-click="update()">Buscar</button>
+                    <button class="btn button-credit" ng-click="verFechas()">Aceptar</button>
                 </div>
 
             </div>

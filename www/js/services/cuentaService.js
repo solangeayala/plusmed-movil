@@ -85,6 +85,18 @@ app.factory('fichasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        modifFicha: function(dato) {
+            return $http({
+                url: urlApi + '/fichaClinica',
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'usuario': 'gustavo'
+                },
+                data: dato,
+                withCredentials: false
+            });
+        },
         filtroFichas: function(dato) {
             if (dato.fechaDesdeCadena) {
                 return $http({
@@ -114,6 +126,46 @@ app.factory('serviciosService', ['$http', function($http) {
                 method: "GET",
                 withCredentials: false
             });
+        },
+    }
+}]);
+
+app.factory('reservasService', ['$http', function($http) {
+    return {
+        getReservas: function() {
+            return $http({
+                url: urlApi + '/reserva',
+                method: "GET",
+                withCredentials: false
+            });
+        },
+        filtroReservas: function(dato) {
+            if (dato.fechas.fechaDesdeCadena && dato.fechas.fechaHastaCadena) {
+                if (dato.idEmpleado) {
+                    return $http({
+                        url: urlApi + '/reserva',
+                        params: { ejemplo: { idEmpleado: { idPersona: dato.idEmpleado.idPersona }, fechaDesdeCadena: dato.fechas.fechaDesdeCadena, fechaHastaCadena: dato.fechas.fechaHastaCadena } },
+                        method: "GET",
+                        withCredentials: false
+                    });
+                } else {
+                    return $http({
+                        url: urlApi + '/reserva',
+                        params: { ejemplo: { fechaDesdeCadena: dato.fechas.fechaDesdeCadena, fechaHastaCadena: dato.fechas.fechaHastaCadena } },
+                        method: "GET",
+                        withCredentials: false
+                    });
+                }
+            }
+
+            if (dato.idEmpleado && !dato.fechas.fechaDesdeCadena && !dato.fechas.fechaHastaCadena) {
+                return $http({
+                    url: urlApi + '/reserva',
+                    params: { ejemplo: { idEmpleado: { idPersona: dato.idEmpleado.idPersona } } },
+                    method: "GET",
+                    withCredentials: false
+                });
+            }
         },
     }
 }]);

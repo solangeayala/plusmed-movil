@@ -1,0 +1,43 @@
+<ion-view view-title="Detalle de ficha">
+    <ion-content>
+        <div style="height: 100px; text-align: center; padding: 10px 10px; background: #09b2bd;"></div>
+
+        <div class="cuenta-card-container">
+            <div id="card" style="height: auto !important">
+                <div>
+                    <h4 class="card-nombre" style="margin-bottom: 14px;"><b>{{ficha.idCliente.nombre}} {{ficha.idCliente.apellido}}</b></h4>
+                    <h5 class="card-numero" style="margin-bottom: 14px;">Motivo: <b>{{ficha.motivoConsulta}}</b></h5>
+                    <h5 class="card-numero" style="margin-bottom: 14px;">Diagnóstico: <b>{{ficha.diagnostico}}</b></h5>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px; margin-left: 20px">
+            <div class="card-cuenta-extracto">
+                <div class="row row-movimiento" style="padding: 0px;">
+                    <div class="col col-extractos">
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Fecha de consulta: <b>{{ficha.fechaHoraCadena}}</b></h4>
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Local: <b>{{ficha.idLocal.nombre}}</b></h4>
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Servicio: <b>{{ficha.idTipoProducto.descripcion}}</b></h4>
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Fisioterapeuta: <b>{{ficha.idEmpleado.nombre}}</b></h4>
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Observación: <b>{{ficha.observacion}}</b>
+                            <button style="float: right; margin-top: -10px;" class="btn btn-light" id="hideshow1">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="card-modif" style="display: none; border-top: none !important" class="card card-extracto">
+            <div class="card-cuenta-extracto animated fadeInDown" style="border: none">
+                <div class="row row-movimiento" style="padding: 0px; display: grid">
+                    <div class="div-filtro">
+                        <label for="obser">Observación</label>
+                        <input class="input-filtro" ng-model="modificado.observacion" name="obser" type="text">
+                    </div>
+                    <button ng-click="modificarFicha()" class="btn button-credit">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
