@@ -1,0 +1,97 @@
+<ion-view view-title="Nuevo Paciente">
+    <ion-content>
+        <div>
+            <form class="form-cambiar-pass" name="formPaciente" ng-submit="nuevoPaciente(formPaciente)">
+                <div class="list">
+                    <label class="item-input cambiar-pass-label">
+                        <span class="input-label label-pass">Nombre</span>
+                    </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input id="idPassword1" placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="datos.nombre" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error  -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.nombre.$dirty}" ng-messages="formPaciente.nombre.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Apellido</span>
+                    </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input id="idPassword2" placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.apellido" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.apellido.$dirty}" ng-messages="formPaciente.apellido.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Email</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar email" class="input-cambiar-pass" type="email" name="email" ng-model="datos.email" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.email.$dirty}" ng-messages="formPaciente.email.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Teléfono</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar telefono" class="input-cambiar-pass" type="text" name="text" ng-model="datos.telefono" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.telefono.$dirty}" ng-messages="formPaciente.telefono.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">RUC</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar RUC" class="input-cambiar-pass" type="text" name="text" ng-model="datos.ruc" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.ruc.$dirty}" ng-messages="formPaciente.ruc.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Cédula</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar cedula" class="input-cambiar-pass" type="text" name="text" ng-model="datos.cedula" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.cedula.$dirty}" ng-messages="formPaciente.cedula.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Tipo persona</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar tipo" class="input-cambiar-pass" type="text" name="text" ng-model="datos.tipoPersona" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <!-- div para el error -->
+                    <div class="validation-error" ng-class="{'is-dirty':formPaciente.tipoPersona.$dirty}" ng-messages="formPaciente.tipoPersona.$error" role="alert">
+                        <div ng-messages-include="validation-errors.html"></div>
+                    </div>
+
+                    <label class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Fecha de Nacimiento</span>
+                        </label>
+                    <div style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar fecha" ng-click="abrirModal()" class="input-cambiar-pass" type="text" name="text" ng-model="datos.fechaNacimiento" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                </div>
+                <button type="submit" ng-disabled="formPaciente.$invalid" class="login100-form-btn">
+                    Crear paciente
+                </button>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

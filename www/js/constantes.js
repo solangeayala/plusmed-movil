@@ -1,4 +1,4 @@
-var urlApi = 'http://gy7228.myfoscam.org:8443/stock-pwfe';
+var urlApi = 'http://gy7228.myfoscam.org:8080/stock-pwfe';
 //var urlApi = 'http://seguro.creditunion.coop.py/banca-online-creditunion-backend-web';
 //var urlApi = 'https://desa02.konecta.com.py/banca-online-creditunion-backend-web';
 //var urlApi = 'http://192.168.14.29:8080';

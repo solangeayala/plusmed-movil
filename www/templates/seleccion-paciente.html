@@ -1,0 +1,48 @@
+<ion-view view-title="Seleccionar Paciente">
+    <ion-content>
+        <div>
+            <div style="display: flex;">
+                <div style="margin-left: 5px; padding: 20px 10px">
+                    <div class="accion-boton" id="hideshow">
+                        <i class="fas fa-filter icon-accion"></i>
+                        <span>Filtrar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="pacientes.length> 0" id="card-filtro" style="display: none" class="card card-extracto">
+                <div class="card-cuenta-extracto animated fadeInDown" style="border: none">
+                    <div class="row row-movimiento" style="padding: 0px; display: grid">
+                        <div class="div-filtro">
+                            <label for="nombre">Nombre</label>
+                            <input class="input-filtro" ng-model="filtro.nombre" name="nombre" type="text">
+                        </div>
+                        <div class="div-filtro">
+                            <label for="apellido">Apellido</label>
+                            <input class="input-filtro" ng-model="filtro.apellido" name="apellido" type="text">
+                        </div>
+                        <button ng-click="filtrar()" class="btn button-credit">Filtrar</button>
+                        <button style="margin-top: 10px" ng-click="obtenerPacientes()" class="btn btn-light">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="pacientes.length> 0" class="card card-extracto">
+                <div ng-repeat="pac in pacientes" class="card-cuenta-extracto">
+                    <div class="row row-movimiento" style="padding: 0px;">
+                        <div class="col col-extractos">
+                            <h4 class="extracto-h4">Nombre: <b>{{pac.nombre}}</b></h4>
+                            <h4 class="extracto-h4">Apellido: <b>{{pac.apellido}}</b></h4>
+                            <h4 class="extracto-h4">Cédula: <b>{{pac.cedula}}</b></h4>
+                            <h4 class="extracto-h4">Persona: <b>{{pac.tipoPersona}}</b></h4>
+                        </div>
+                        <div class="col col-2">
+                            <button class="btn btn-light" ng-click="seleccionarPaciente(pac)">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

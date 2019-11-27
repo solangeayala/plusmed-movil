@@ -1,0 +1,65 @@
+<ion-view view-title="Nueva Ficha">
+    <ion-content>
+        <div>
+            <form class="form-cambiar-pass" name="formPaciente" ng-submit="nuevoPaciente(formPaciente)">
+                <div class="list">
+                    <label class="item-input cambiar-pass-label">
+                        <span class="input-label label-pass">Paciente</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="cliente.nombre" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <div ng-if="flagFicha == false">
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-paciente">Seleccionar paciente</button>
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Apellido</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="cliente.apellido" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Servicio</span>
+                    </label>
+                    <div ng-if="flagFicha == true">
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-servicio">Seleccionar servicio</button>
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Motivo</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar motivo" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.motivo" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Diagnóstico</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar diagnóstico" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.diagnostico" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Observación</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar observacion" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.observacion" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Fisioterapeuta</span>
+                    </label>
+                    <div ng-if="flagFicha == true">
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-fisio">Seleccionar fisioterapeuta</button>
+                    </div>
+
+                </div>
+                <button type="submit" ng-disabled="formPaciente.$invalid" class="login100-form-btn">
+                   Crear ficha
+                </button>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

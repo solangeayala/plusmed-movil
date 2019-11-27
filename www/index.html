@@ -67,13 +67,18 @@
     <script src="js/controllers/cuentasCtrl.js"></script>
     <script src="js/controllers/extractosCtrl.js"></script>
     <script src="js/controllers/autogestionCtrl.js"></script>
+    <script src="js/controllers/pacientesCtrl.js"></script>
     <script src="js/controllers/cambiarpassCtrl.js"></script>
+    <script src="js/controllers/seleccion-paciente.js"></script>
     <script src="js/controllers/extractos/ctacte.js"></script>
     <script src="js/controllers/extractos/ahorro.js"></script>
     <script src="js/controllers/extractos/ahorrofijo.js"></script>
     <script src="js/controllers/extractos/prestamos.js"></script>
     <script src="js/controllers/extractos/capital.js"></script>
     <script src="js/controllers/extractos/cheques-rechazados.js"></script>
+    <script src="js/controllers/pacientes/nuevo-paciente.js"></script>
+    <script src="js/controllers/fichas/fichas.js"></script>
+    <script src="js/controllers/fichas/nuevaFicha.js"></script>
 
 
 
@@ -101,9 +106,30 @@
                     </h4>
                 </div>
                 <div style="text-align: center">
-                    <button class="button-descargar" ng-click="update()">Buscar</button>
+                    <button class="button-credit" ng-click="update()">Buscar</button>
                 </div>
 
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="templates/modal-fecha-unica.html" type="text/ng-template">
+    <ion-modal-view class="modal-bordeado">
+        <ion-header-bar class="bar">
+            <h1 class="title" style="border-bottom: 2px solid green;padding-bottom: 10px;">Seleccionar fecha</h1>
+            <button class="button button-clear button-primary" ng-click="cerrarModal()"><i style="color: black" class="fas fa-times"></i></button>
+        </ion-header-bar>
+        <ion-content overflow-scroll="false" class="padding">
+            <div class="list list-descargar">
+                <div style="margin-top: 20px;padding-left: 10px;">
+                    <h4>Fecha Inicio:
+                        <input type="date" ng-change="formatearFechaDesde()" class="input-fecha-extracto" ng-model="trx.fechaDesde" placeholder="dd/mm/yyyy">
+                    </h4>
+                </div>
+                <div style="text-align: center">
+                    <button class="btn button-credit" ng-click="verFecha()">Aceptar</button>
+                </div>
             </div>
         </ion-content>
     </ion-modal-view>
@@ -112,40 +138,21 @@
 <script id="templates/modal.html" type="text/ng-template">
     <ion-modal-view class="modal-bordeado">
         <ion-header-bar class="bar">
-            <h1 class="title" style="border-bottom: 2px solid green;padding-bottom: 10px;">Descargar extracto</h1>
+            <h1 class="title" style="border-bottom: 2px solid #09b2bd;padding-bottom: 10px;">Paciente</h1>
             <button class="button button-clear button-primary" ng-click="cerrarModal()"><i style="color: black" class="fas fa-times"></i></button>
         </ion-header-bar>
         <ion-content overflow-scroll="false" class="padding">
             <div class="list list-descargar">
                 <div style="margin-top: 9px;padding-left: 10px; ">
-                    <h4>Cuenta: <b>{{cuenta.numero}}</b></h4>
                     <h4>Nombre: <b>{{cuenta.nombre}}</b></h4>
-                    <h4>Moneda: <b>{{cuenta.moneda}}</b></h4>
-                    <div ng-if="(tipo == 'CTACTE') || (tipo == 'AHORRO')">
-                        <h4>Fecha Inicio:
-                            <input type="date" ng-change="formatearFechaDesde()" class="input-fecha-extracto" ng-model="trx.fechaDesde" placeholder="dd/mm/yyyy">
-                        </h4>
-                        <h4>Fecha Fin:
-                            <input type="date" ng-change="formatearFechaHasta()" style="margin-left: 28px !important;" class="input-fecha-extracto" ng-model="trx.fechaHasta" placeholder="dd/mm/yyyy">
-                        </h4>
-                    </div>
-                    <div ng-if="tipo == 'CREDITO'">
-                        <h4>Pagaré:
-                            <select style="padding: 10px !important;" class="input-fecha-extracto" ng-model="cuenta.pagare" ng-init="cuenta.pagare = cuenta.pagares[0]" ng-options="s for s in cuenta.pagares"></select>
-                        </h4>
-                    </div>
-                    <div ng-if="tipo == 'PLAZO_FIJO'">
-                        <h4>Documento:
-                            <select style="padding: 10px !important;" class="input-fecha-extracto" ng-model="cuenta.nroDocumento" ng-init="cuenta.nroDocumento = cuenta.documentos[0]" ng-options="s for s in cuenta.documentos"></select>
-                        </h4>
-                    </div>
+                    <h4>Apellido: <b>{{cuenta.apellido}}</b></h4>
+                    <h4>Cedula: <b>{{cuenta.cedula}}</b></h4>
+                    <h4>Telefono: <b>{{cuenta.telefono}}</b></h4>
+                    <h4>Email: <b>{{cuenta.email}}</b></h4>
+                    <h4>Fecha Nacimiento: <b>{{cuenta.fechaNacimiento}}</b></h4>
                 </div>
-                <div style="text-align: center">
-                    <button ng-if="tipo == 'CTACTE'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'CTACTE')">Descargar</button>
-                    <button ng-if="tipo == 'CREDITO'" class="button-descargar" ng-click="descargarExtracto(pres, cuenta, 'CREDITO')">Descargar</button>
-                    <button ng-if="tipo == 'AHORRO'" class="button-descargar" ng-click="descargarExtracto(pres, cuenta, 'AHORRO')">Descargar</button>
-                    <button ng-if="tipo == 'CAPITAL'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'CAPITAL')">Descargar</button>
-                    <button ng-if="tipo == 'PLAZO_FIJO'" class="button-descargar" ng-click="descargarExtracto(ctaCte, cuenta, 'PLAZO_FIJO')">Descargar</button>
+                <div style="text-align: center; margin-top: 20px">
+                    <button ng-if="tipo == 'DATOS'" class="btn button-credit" ng-click="nuevaFichaPaciente(cuenta)">Nueva ficha clínica</button>
                 </div>
 
             </div>

@@ -1,10 +1,34 @@
 .card-extracto {
     padding: 13px !important;
-    border-top: 3px solid green !important;
-    border-radius: 5px !important;
+    border-top: 3px solid #09b2bd !important;
     margin: 10px !important;
     border: none;
     box-shadow: none !important;
+}
+
+.input-filtro {
+    border-bottom: 1px solid lightgray !important;
+    width: 100%;
+}
+
+.div-filtro {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.accion-boton {
+    border-radius: 100%;
+    background-image: linear-gradient(to top, #09b2bd 0%, #4cf4ff 99%, #77f3fb 100%);
+    height: 70px;
+    width: 70px;
+    color: white;
+    display: inline-grid;
+    text-align: center;
+}
+
+.icon-accion {
+    margin-top: 15px;
+    margin-bottom: -15px;
 }
 
 .transition,

@@ -225,43 +225,33 @@ var app = angular.module('plusmed.controllers', [])
             "password": $scope.loginData.password,
         }
         $ionicLoading.show();
-        console.log('parametros ', parametros)
-        setTimeout(function() {
-            $localStorage.socio = parametros;
-            $scope.asd();
-        }, 200);
-        /*loginService.getUsuariosSistema()
+        console.log('parametros ', parametros);
+        loginService.getUsuariosSistema()
             .then(function(response) {
-                    console.log(response.data);
-                    $ionicLoading.hide();
+                    if (response.status == 200) {
+                        $scope.flag = false;
+                        console.log(response.data);
+                        angular.forEach(response.data.lista, function(value) {
+                            if (parametros.username == value.email) {
+                                $localStorage.socio = value;
+                                $scope.flag = true;
+                                $scope.asd();
+                            }
+                        });
+                        if (!$scope.flag) {
+                            UtilFactory.aceptar('Atención', mensaje.errorPin);
+                        }
+                        $ionicLoading.hide();
+                    } else {
+                        UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
+                        $ionicLoading.hide();
+                    }
                     $scope.datos = {};
                 },
                 function(response) {
                     UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
                     $ionicLoading.hide();
                 });
-        loginService.login(parametros)
-            .then(function(response) {
-                    console.log(response.data);
-                    if (response.data.estado === 0) {
-                        if (response.data.dato.cambioPwd) {
-                            $state.go('menu.cambiarpass');
-                        } else {
-                            $scope.asd();
-                        }
-                        $localStorage.socio = response.data.dato;
-                        $rootScope.logueado = true;
-                    } else {
-                        UtilFactory.aceptar('Usuario/Contraseña incorrectos');
-                    }
-                    $ionicLoading.hide();
-                    $scope.datos = {};
-                },
-                function(response) {
-                    //console.log('response error login1 ', JSON.stringify(response))
-                    UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
-                    $ionicLoading.hide();
-                });*/
     };
 
     $scope.mostrarPass = function() {

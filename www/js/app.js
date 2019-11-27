@@ -70,7 +70,7 @@ angular.module('plusmed', [
 
 .config(function($ionicConfigProvider, $ionicNativeTransitionsProvider, KeepaliveProvider, IdleProvider) {
 
-    IdleProvider.idle(2 * 50); // in seconds
+    IdleProvider.idle(70 * 50); // in seconds
     IdleProvider.timeout(0); // in seconds
     IdleProvider.keepalive(false);
 
@@ -182,19 +182,6 @@ angular.module('plusmed', [
                 }
             }
         })
-        .state('menu.extractos', {
-            url: '/inicio/extractos',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos.html',
-                    controller: 'extractosCtrl'
-                }
-            }
-        })
         .state('menu.autogestion', {
             url: '/inicio/autogestion',
             cache: false,
@@ -205,6 +192,87 @@ angular.module('plusmed', [
                 'menu': {
                     templateUrl: 'templates/autogestion.html',
                     controller: 'autogestionCtrl'
+                }
+            }
+        })
+        .state('menu.pacientes', {
+            url: '/inicio/pacientes',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/pacientes/pacientes.html',
+                    controller: 'pacientesCtrl'
+                }
+            }
+        })
+        .state('menu.nuevo-paciente', {
+            url: '/inicio/pacientes/nuevo',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/pacientes/nuevo-paciente.html',
+                    controller: 'nuevoPacienteCtrl'
+                }
+            }
+        })
+        .state('menu.fichas', {
+            url: '/inicio/fichas',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/fichas/fichas.html',
+                    controller: 'fichasCtrl'
+                }
+            }
+        })
+
+    .state('menu.nueva-ficha', {
+        url: '/inicio/fichas/nueva',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/fichas/nueva-ficha.html',
+                controller: 'fichaNuevaCtrl'
+            }
+        }
+    })
+
+    .state('menu.seleccion-paciente', {
+        url: '/inicio/seleccion/paciente',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/seleccion-paciente.html',
+                controller: 'seleccionPacienteCtrl'
+            }
+        }
+    })
+
+    .state('menu.seleccion-servicio', {
+            url: '/inicio/seleccion/servicio',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/seleccion-servicio.html',
+                    controller: 'seleccionServicioCtrl'
                 }
             }
         })
@@ -221,165 +289,5 @@ angular.module('plusmed', [
                 }
             }
         })
-        .state('menu.consultas', {
-            url: '/inicio/consultas',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas.html',
-                    controller: 'consultasCtrl'
-                }
-            }
-        })
-        .state('menu.consultas-ahorrofijo', {
-            url: '/inicio/consultas/ahorrofijo',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas/plazofijo.html',
-                    controller: 'ahorrofijoCtrl'
-                }
-            }
-        })
-        .state('menu.consultas-capital', {
-            url: '/inicio/consultas/capital',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas/capital.html',
-                    controller: 'capitalCtrl'
-                }
-            }
-        })
-        .state('menu.consultas-ahorro', {
-            url: '/inicio/consultas/ahorro',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas/ahorro.html',
-                    controller: 'ahorroCtrl'
-                }
-            }
-        })
-        .state('menu.consultas-ctacte', {
-            url: '/inicio/consultas/ctacte',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas/ctacte.html',
-                    controller: 'ctacteCtrl'
-                }
-            }
-        })
-        .state('menu.consultas-prestamo', {
-            url: '/inicio/consultas/prestamo',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/consultas/prestamos.html',
-                    controller: 'prestamosCtrl'
-                }
-            }
-        })
-        .state('menu.extractos-ctacte', {
-            url: '/inicio/extractos/ctacte',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/ctacte.html',
-                    controller: 'extractoCtaCteCtrl'
-                }
-            }
-        })
-        .state('menu.cheques-rechazados', {
-            url: '/inicio/extractos/cheques-rechazados',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/cheques-rechazados.html',
-                    controller: 'chequesRechazadosCtrl'
-                }
-            }
-        })
-        .state('menu.extractos-ahorro', {
-            url: '/inicio/extractos/ahorro',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            params: {
-                cuenta: null
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/ahorro.html',
-                    controller: 'extractoAhorroCtrl'
-                }
-            }
-        })
-        .state('menu.extractos-ahorrofijo', {
-            url: '/inicio/extractos/ahorrofijo',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/ahorrofijo.html',
-                    controller: 'extractoFijoCtrl'
-                }
-            }
-        })
-        .state('menu.extractos-capital', {
-            url: '/inicio/extractos/capital',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/capital.html',
-                    controller: 'extractoCapitalCtrl'
-                }
-            }
-        })
-        .state('menu.extractos-prestamos', {
-            url: '/inicio/extractos/prestamos',
-            cache: false,
-            nativeTransitions: {
-                "type": "fade"
-            },
-            views: {
-                'menu': {
-                    templateUrl: 'templates/extractos/prestamos.html',
-                    controller: 'extractoPrestamoCtrl'
-                }
-            }
-        })
-        // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app');
 });

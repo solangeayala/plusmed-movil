@@ -11,10 +11,12 @@ app.factory('loginService', ['$http', function($http) {
             });
         },
         getUsuariosSistema: function() {
-            var param = { "soloUsuariosDelSistema": true };
+            console.log('GET USUARIOS DEL SISTEMA');
             return $http({
-                url: urlApi + '/persona?ejemplo=' + param,
-                method: "GET"
+                url: urlApi + '/persona',
+                params: { ejemplo: { soloUsuariosDelSistema: true } },
+                method: "GET",
+                withCredentials: false
             });
         },
         cambiarContrasena: function(parametros) {
