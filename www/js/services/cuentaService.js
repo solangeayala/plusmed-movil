@@ -73,5 +73,47 @@ app.factory('fichasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        nuevaFicha: function(dato) {
+            return $http({
+                url: urlApi + '/fichaClinica',
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'usuario': 'gustavo'
+                },
+                data: dato,
+                withCredentials: false
+            });
+        },
+        filtroFichas: function(dato) {
+            if (dato.fechaDesdeCadena) {
+                return $http({
+                    url: urlApi + '/fichaClinica',
+                    params: { ejemplo: { fechaDesdeCadena: dato.fechaDesdeCadena, fechaHastaCadena: dato.fechaHastaCadena } },
+                    method: "GET",
+                    withCredentials: false
+                });
+            }
+            if (dato.idCliente) {
+                return $http({
+                    url: urlApi + '/fichaClinica',
+                    params: { ejemplo: { idCliente: { idPersona: dato.idCliente } } },
+                    method: "GET",
+                    withCredentials: false
+                });
+            }
+        },
+    }
+}]);
+
+app.factory('serviciosService', ['$http', function($http) {
+    return {
+        getServicios: function() {
+            return $http({
+                url: urlApi + '/presentacionProducto',
+                method: "GET",
+                withCredentials: false
+            });
+        },
     }
 }]);

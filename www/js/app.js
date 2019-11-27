@@ -264,15 +264,29 @@ angular.module('plusmed', [
     })
 
     .state('menu.seleccion-servicio', {
-            url: '/inicio/seleccion/servicio',
+        url: '/inicio/seleccion/servicio',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/seleccion-servicio.html',
+                controller: 'seleccionServicioCtrl'
+            }
+        }
+    })
+
+    .state('menu.seleccion-fisio', {
+            url: '/inicio/seleccion/fisio',
             cache: false,
             nativeTransitions: {
                 "type": "fade"
             },
             views: {
                 'menu': {
-                    templateUrl: 'templates/seleccion-servicio.html',
-                    controller: 'seleccionServicioCtrl'
+                    templateUrl: 'templates/seleccion-fisio.html',
+                    controller: 'seleccionFisioCtrl'
                 }
             }
         })

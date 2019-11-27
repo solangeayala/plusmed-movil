@@ -20,12 +20,8 @@
                 <div class="card-cuenta-extracto animated fadeInDown" style="border: none">
                     <div class="row row-movimiento" style="padding: 0px; display: grid">
                         <div class="div-filtro">
-                            <label for="nombre">Nombre</label>
-                            <input class="input-filtro" ng-model="filtro.nombre" name="nombre" type="text">
-                        </div>
-                        <div class="div-filtro">
-                            <label for="apellido">Apellido</label>
-                            <input class="input-filtro" ng-model="filtro.apellido" name="apellido" type="text">
+                            <label for="nombre">Fecha</label>
+                            <input class="input-filtro" ng-click="abrirModal()" ng-model="filtro.fechaDesdeCadena" name="nombre" type="text">
                         </div>
                         <button ng-click="filtrar()" class="btn button-credit">Filtrar</button>
                         <button style="margin-top: 10px" ng-click="obtenerFichas()" class="btn btn-light">Limpiar</button>
@@ -47,7 +43,10 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
+            <div ng-show="fichas.length ==  0" class="card card-extracto">
+                <h5>No se encontraron registros</h5>
+            </div>
         </div>
     </ion-content>
 </ion-view>
