@@ -28,21 +28,22 @@ function savebase64AsPDF(folderpath, filename, content, contentType) {
 
     console.log("escribiendo");
 
-    window.resolveLocalFileSystemURL(folderpath, function (dir) {
+    window.resolveLocalFileSystemURL(folderpath, function(dir) {
         console.log("acceso al directorio OK");
-        dir.getFile(filename, { create: true }, function (file) {
+        dir.getFile(filename, { create: true }, function(file) {
             console.log("archivo creado");
-            file.createWriter(function (fileWriter) {
+            file.createWriter(function(fileWriter) {
                 console.log("escribiendo en el archivo");
                 fileWriter.write(DataBlob);
-            }, function () {
+            }, function() {
                 alert('imposible guardar en ' + folderpath);
             });
         });
     });
 }
 
-app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $timeout,
+
+app.controller('extractosCtrl', function($scope, $rootScope, $ionicModal, $timeout,
     $ionicLoading, UtilFactory, $filter, $localStorage, loginService,
     movimientoService, cuentaService, $ionicPlatform, $ionicHistory, $ionicPopup) {
 
@@ -57,11 +58,11 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     $ionicLoading.show();
 
     cuentaService.consultaCuenta('PLAZO_FIJO')
-        .then(function (response) {
+        .then(function(response) {
             if (response.data.estado === 0) {
                 $scope.ahorroPlazoFijo = response.data.dato;
 
-                $.each($scope.ahorroPlazoFijo, function (i, val) {
+                $.each($scope.ahorroPlazoFijo, function(i, val) {
                     console.log(val);
                     if (val.documentos) {
                         val.documentos = val.documentos.split(',');
@@ -77,7 +78,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
             }
-        }, function (response) {
+        }, function(response) {
             flag1 = true;
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
@@ -88,7 +89,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     // CAJA DE AHORRO    
 
     cuentaService.consultaCuenta('AHORRO')
-        .then(function (response) {
+        .then(function(response) {
             if (response.data.estado === 0) {
                 $scope.ahorro = response.data.dato;
                 console.log($scope.ahorro);
@@ -99,7 +100,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
             }
-        }, function (response) {
+        }, function(response) {
             //toastr.info('Ha ocurrido un error, intente nuevamente', 'Atención');
             flag2 = true;
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
@@ -110,7 +111,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     // CAPITAL
 
     cuentaService.consultaCuenta('CAPITAL')
-        .then(function (response) {
+        .then(function(response) {
             if (response.data.estado === 0) {
                 $scope.capital = response.data.dato;
                 console.log($scope.capital);
@@ -121,7 +122,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
             }
-        }, function (response) {
+        }, function(response) {
             //toastr.info('Ha ocurrido un error, intente nuevamente', 'Atención');
             flag3 = true;
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
@@ -132,7 +133,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     // CUENTA CORRIENTE
 
     cuentaService.consultaCuenta('CTACTE')
-        .then(function (response) {
+        .then(function(response) {
             if (response.data.estado === 0) {
                 $scope.ctaCte = response.data.dato;
                 console.log($scope.ctaCte);
@@ -143,7 +144,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
             }
-        }, function (response) {
+        }, function(response) {
             //toastr.info('Ha ocurrido un error, intente nuevamente', 'Atención');
             flag4 = true;
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
@@ -154,10 +155,10 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     // PRESTAMOS
 
     cuentaService.consultaCuenta('CREDITO')
-        .then(function (response) {
+        .then(function(response) {
             if (response.data.estado === 0) {
                 $scope.prestamo = response.data.dato;
-                $.each($scope.prestamo, function (i, val) {
+                $.each($scope.prestamo, function(i, val) {
                     if (val.pagares) {
                         val.pagares = val.pagares.split(',');
                     } else {
@@ -172,7 +173,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
                 $ionicLoading.hide();
             }
-        }, function (response) {
+        }, function(response) {
             //toastr.info('Ha ocurrido un error, intente nuevamente', 'Atención');
             flag5 = true;
             if (flag1 && flag2 && flag3 && flag4 && flag5) {
@@ -180,7 +181,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             }
         });
 
-    $scope.descargarExtracto = function (seleccion, cuenta, tipo) {
+    $scope.descargarExtracto = function(seleccion, cuenta, tipo) {
         $scope.formatearFechaDesde();
         $scope.formatearFechaHasta();
 
@@ -227,60 +228,60 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
             }
             $ionicLoading.show();
             movimientoService.extractoDescargar(json)
-                .then(function (response) {
-                    if (response.data.estado == 0) {
-                        flagDesde,
+                .then(function(response) {
+                        if (response.data.estado == 0) {
+                            flagDesde,
                             flagHasta = false;
-                        $scope.extractos = response.data.dato;
-                        var filename = "Extracto-" + json.mes + "-" + json.anho + ".pdf";
-                        var myBase64 = $scope.extractos;
-                        var contentType = "application/pdf";
-                        if (ionic.Platform.isAndroid()) {
-                            var folderpath = cordova.file.externalRootDirectory;
-                        } else {
-                            var folderpath = cordova.file.documentsDirectory;
-                        }
-                        try {
-                            savebase64AsPDF(folderpath, filename, myBase64, contentType);
-                            setTimeout(function () {
-                                if (ionic.Platform.isAndroid()) {
-                                    var filePath= 'cdv' + folderpath;
-                                } else {
-                                    var filePath= folderpath;
-                                }
-                                cordova.plugins.fileOpener2.open(
-                                    filePath + filename, // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Downloads/starwars.pdf
-                                    'application/pdf', {
-                                    error: function (e) {
-                                        console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
-                                    },
-                                    success: function () {
-                                        console.log('file opened successfully');
+                            $scope.extractos = response.data.dato;
+                            var filename = "Extracto-" + json.mes + "-" + json.anho + ".pdf";
+                            var myBase64 = $scope.extractos;
+                            var contentType = "application/pdf";
+                            if (ionic.Platform.isAndroid()) {
+                                var folderpath = cordova.file.externalRootDirectory;
+                            } else {
+                                var folderpath = cordova.file.documentsDirectory;
+                            }
+                            try {
+                                savebase64AsPDF(folderpath, filename, myBase64, contentType);
+                                setTimeout(function() {
+                                    if (ionic.Platform.isAndroid()) {
+                                        var filePath = 'cdv' + folderpath;
+                                    } else {
+                                        var filePath = folderpath;
                                     }
-                                }
-                                );
-                                /*window.cordova.plugins.FileOpener.openFile(folderpath + filename, function() {
-                                    console.log('exito');
-                                }, function(err) {
-                                    console.log(err);
-                                });*/
-                            }, 1000);
+                                    cordova.plugins.fileOpener2.open(
+                                        filePath + filename, // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Downloads/starwars.pdf
+                                        'application/pdf', {
+                                            error: function(e) {
+                                                console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
+                                            },
+                                            success: function() {
+                                                console.log('file opened successfully');
+                                            }
+                                        }
+                                    );
+                                    /*window.cordova.plugins.FileOpener.openFile(folderpath + filename, function() {
+                                        console.log('exito');
+                                    }, function(err) {
+                                        console.log(err);
+                                    });*/
+                                }, 1000);
 
-                        } catch (err) {
-                            console.log('err in descargar extracto', err)
-                            UtilFactory.aceptar('', err);
+                            } catch (err) {
+                                console.log('err in descargar extracto', err)
+                                UtilFactory.aceptar('', err);
+                            }
                         }
-                    }
-                    else {
-                        flagDesde,
+                        else {
+                            flagDesde,
                             flagHasta = false;
-                        UtilFactory.aceptar('No posee movimientos en la fecha seleccionada');
-                    }
-                    $ionicLoading.hide();
-                },
-                    function (response) {
+                            UtilFactory.aceptar('No posee movimientos en la fecha seleccionada');
+                        }
+                        $ionicLoading.hide();
+                    },
+                    function(response) {
                         flagDesde,
-                            flagHasta = false;
+                        flagHasta = false;
                         UtilFactory.aceptar('Ha ocurrido un error, intente nuevamente');
                         $ionicLoading.hide();
                     });
@@ -289,7 +290,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
     };
 
 
-    $ionicModal.fromTemplateUrl('templates/modal.html', function ($ionicModal) {
+    $ionicModal.fromTemplateUrl('templates/modal.html', function($ionicModal) {
         $scope.modal = $ionicModal;
         $rootScope.existeModal = $scope.modal;
     }, {
@@ -299,7 +300,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
         animation: 'slide-in-up'
     });
 
-    $scope.abrirModal = function (cuenta, tipo) {
+    $scope.abrirModal = function(cuenta, tipo) {
         $scope.tipo = tipo;
         $scope.cuenta = cuenta;
         var today = new Date();
@@ -309,12 +310,12 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
         $scope.modal.show();
     };
 
-    $scope.cerrarModal = function () {
+    $scope.cerrarModal = function() {
         $scope.cuenta = '';
         $scope.modal.hide();
     };
 
-    $scope.formatearFechaDesde = function () {
+    $scope.formatearFechaDesde = function() {
         console.log($scope.trx.fechaDesde);
         var dd = $scope.trx.fechaDesde.getDate();
         var mm = $scope.trx.fechaDesde.getMonth() + 1; //January is 0!
@@ -332,7 +333,7 @@ app.controller('extractosCtrl', function ($scope, $rootScope, $ionicModal, $time
         flagDesde = true;
     };
 
-    $scope.formatearFechaHasta = function () {
+    $scope.formatearFechaHasta = function() {
         console.log($scope.trx.fechaDesde);
         var dd = $scope.trx.fechaHasta.getDate();
         var mm = $scope.trx.fechaHasta.getMonth() + 1; //January is 0!

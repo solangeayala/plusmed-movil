@@ -3,24 +3,24 @@
         <div>
             <div style="display: flex;">
                 <div style="margin-left: 5px; padding: 20px 10px">
-                    <div class="accion-boton" ui-sref="menu.nueva-ficha">
+                    <div class="accion-boton" ui-sref="menu.nuevo-turno">
                         <i class="fas fa-plus icon-accion"></i>
                         <span>Nuevo</span>
                     </div>
                 </div>
                 <div style="margin-left: 5px; padding: 20px 10px">
-                    <div class="accion-boton" id="hideshow">
+                    <div class="accion-boton" id="hideshowTurnos">
                         <i class="fas fa-filter icon-accion"></i>
                         <span>Filtrar</span>
                     </div>
                 </div>
             </div>
 
-            <div ng-show="reservas.length> 0" id="card-filtro" style="display: none" class="card card-extracto">
+            <div ng-show="reservas.length> 0" id="card-filtroTurnos" style="display: none" class="card card-extracto">
                 <div class="card-cuenta-extracto animated fadeInDown" style="border: none">
                     <div class="row row-movimiento" style="padding: 0px; display: grid">
                         <div class="div-filtro">
-                            <button style="margin-top: 10px" ng-click="porCliente()" class="btn button-credit">Por cliente</button>
+                            <button style="margin-top: 10px" ng-click="porCliente()" class="btn button-credit">Por paciente</button>
                             <button style="margin-top: 10px" ng-click="porFisio()" class="btn button-credit">Por fisioterapeuta</button>
                             <button style="margin-top: 10px" ng-click="abrirModal()" class="btn button-credit">Por fecha</button>
                         </div>

@@ -208,6 +208,19 @@ angular.module('plusmed', [
                 }
             }
         })
+        .state('menu.fisioterapeutas', {
+            url: '/inicio/fisioterapeutas',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/empleados/fisioterapeutas.html',
+                    controller: 'fisioterapeutasCtrl'
+                }
+            }
+        })
         .state('menu.nuevo-paciente', {
             url: '/inicio/pacientes/nuevo',
             cache: false,
@@ -218,6 +231,32 @@ angular.module('plusmed', [
                 'menu': {
                     templateUrl: 'templates/pacientes/nuevo-paciente.html',
                     controller: 'nuevoPacienteCtrl'
+                }
+            }
+        })
+        .state('menu.reservas-paciente', {
+            url: '/inicio/pacientes/reservas',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/pacientes/reservas-paciente.html',
+                    controller: 'reservasPacienteCtrl'
+                }
+            }
+        })
+        .state('menu.reservas-fisio', {
+            url: '/inicio/fisio/reservas',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/empleados/reservas-fisio.html',
+                    controller: 'reservasFisioCtrl'
                 }
             }
         })
@@ -301,6 +340,61 @@ angular.module('plusmed', [
             'menu': {
                 templateUrl: 'templates/seleccion-fisio.html',
                 controller: 'seleccionFisioCtrl'
+            }
+        }
+    })
+
+    .state('menu.seleccion-fisio2', {
+            url: '/inicio/seleccion/fisio2',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/seleccion-fisio.html',
+                    controller: 'seleccionFisio2Ctrl'
+                }
+            }
+        })
+        .state('menu.seleccion-fisio3', {
+            url: '/inicio/seleccion/fisio3',
+            cache: false,
+            nativeTransitions: {
+                "type": "fade"
+            },
+            views: {
+                'menu': {
+                    templateUrl: 'templates/seleccion-fisio.html',
+                    controller: 'seleccionFisio3Ctrl'
+                }
+            }
+        })
+
+    .state('menu.seleccion-paciente2', {
+        url: '/inicio/seleccion/paciente',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/seleccion-paciente.html',
+                controller: 'seleccionPaciente2Ctrl'
+            }
+        }
+    })
+
+    .state('menu.seleccion-paciente3', {
+        url: '/inicio/seleccion/paciente3',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/seleccion-paciente.html',
+                controller: 'seleccionPaciente3Ctrl'
             }
         }
     })

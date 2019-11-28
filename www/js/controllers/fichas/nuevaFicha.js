@@ -1,5 +1,40 @@
+function downloadFile(url) {
+    var fileTransfer = new FileTransfer();
+    var uri = encodeURI(url);
+    var filepath = "www/download/";
+
+    fileTransfer.onprogress = function(progressEvent) {
+        if (progressEvent.lengthComputable) {
+            loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+        } else {
+            loadingStatus.increment();
+        }
+    };
+    console.log('hola sol');
+    fileTransfer.download(
+        uri,
+        filePath,
+        function(entry) {
+            console.log("download complete: " + entry.fullPath);
+        },
+        function(error) {
+            console.log("download error source " + error.source);
+            console.log("download error target " + error.target);
+            console.log("upload error code" + error.code);
+        },
+        false, {
+            headers: {
+
+            }
+        }
+    );
+}
+
 app.controller('fichaNuevaCtrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, fichasService, UtilFactory) {
+
+    downloadFile('imagenes.jpg');
+
     $scope.datos = {};
     $scope.flagFicha = false;
     $scope.flagServ = false;

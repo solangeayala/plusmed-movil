@@ -1,6 +1,5 @@
-app.controller('seleccionPacienteCtrl', function($scope, $ionicModal, $timeout,
+app.controller('seleccionPaciente3Ctrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, pacienteService, UtilFactory) {
-
     $scope.filtro = {};
 
     $ionicModal.fromTemplateUrl('templates/modal.html', function($ionicModal) {
@@ -35,13 +34,9 @@ app.controller('seleccionPacienteCtrl', function($scope, $ionicModal, $timeout,
 
     $scope.seleccionarPaciente = function(paciente) {
         $ionicLoading.show();
-        $localStorage.pacienteSeleccion = paciente;
+        $localStorage.pacienteSeleccionTurno = paciente;
         $ionicLoading.hide();
-        if ($localStorage.flagReservaFiltro == true) {
-            $state.go('menu.filtro-cliente');
-        } else {
-            $state.go('menu.nueva-ficha');
-        }
+        $state.go('menu.nuevo-turno');
     };
 
     $('#hideshow').on('click', function(event) {

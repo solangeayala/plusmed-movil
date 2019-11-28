@@ -1,4 +1,4 @@
-app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
+app.controller('fisioterapeutasCtrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, loginService, UtilFactory) {
 
     $scope.filtro = {};
@@ -13,7 +13,7 @@ app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
         animation: 'slide-in-up'
     });
 
-    $scope.obtenerFisio = function() {
+    $scope.obtenerFisios = function() {
         $ionicLoading.show();
         loginService.getUsuariosSistema()
             .then(function(response) {
@@ -31,22 +31,29 @@ app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
                 });
     };
 
-    $scope.obtenerFisio();
+    $scope.obtenerFisios();
 
-    $scope.seleccionarFisio = function(serv) {
-        $ionicLoading.show();
-        $localStorage.fisioSeleccion = serv;
-        $ionicLoading.hide();
-        if ($localStorage.flagReservaFiltro == true) {
-            $localStorage.flagReservaFiltro == false;
-            $state.go('menu.filtro-fisio');
-        } else {
-            $state.go('menu.nueva-ficha');
-        }
+    $scope.abrirModal = function(cuenta, tipo, fisio) {
+        $scope.tipo = tipo;
+        $scope.cuenta = cuenta;
+        $scope.fisio = fisio;
+        var today = new Date();
+        $scope.trx = {};
+        $scope.trx.fechaDesde = new Date(today.getFullYear(), today.getMonth(), 1);
+        $scope.trx.fechaHasta = new Date();
+        $scope.modal.show();
     };
 
-    $('#hideshow').on('click', function(event) {
-        $('#card-filtro').toggle('show');
-    });
+    $scope.cerrarModal = function() {
+        $scope.cuenta = '';
+        $scope.modal.hide();
+    };
 
-});
+    $scope.verReservas = function(fisio) {
+        $localStorage.fisioVerReservas = fisio;
+        $scope.cerrarModal();
+        $state.go('menu.reservas-fisio');
+    };
+
+
+})

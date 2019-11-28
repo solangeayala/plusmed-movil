@@ -67,13 +67,18 @@
     <script src="js/controllers/cuentasCtrl.js"></script>
     <script src="js/controllers/extractosCtrl.js"></script>
     <script src="js/controllers/autogestionCtrl.js"></script>
+    <script src="js/controllers/empleados/fisioterapeutas.js"></script>
     <script src="js/controllers/pacientesCtrl.js"></script>
     <script src="js/controllers/cambiarpassCtrl.js"></script>
     <script src="js/controllers/seleccion-paciente.js"></script>
+    <script src="js/controllers/seleccion2-paciente.js"></script>
+    <script src="js/controllers/seleccion3-paciente.js"></script>
     <script src="js/controllers/seleccion-servicio.js"></script>
     <script src="js/controllers/filtroFisio.js"></script>
     <script src="js/controllers/filtroCliente.js"></script>
     <script src="js/controllers/seleccion-fisio.js"></script>
+    <script src="js/controllers/seleccion2-fisio.js"></script>
+    <script src="js/controllers/seleccion3-fisio.js"></script>
     <script src="js/controllers/extractos/ctacte.js"></script>
     <script src="js/controllers/extractos/ahorro.js"></script>
     <script src="js/controllers/extractos/ahorrofijo.js"></script>
@@ -81,6 +86,8 @@
     <script src="js/controllers/extractos/capital.js"></script>
     <script src="js/controllers/extractos/cheques-rechazados.js"></script>
     <script src="js/controllers/pacientes/nuevo-paciente.js"></script>
+    <script src="js/controllers/pacientes/reservasPaciente.js"></script>
+    <script src="js/controllers/empleados/reservasFisio.js"></script>
     <script src="js/controllers/fichas/fichas.js"></script>
     <script src="js/controllers/fichas/nuevaFicha.js"></script>
     <script src="js/controllers/fichas/detalleFicha.js"></script>
@@ -146,7 +153,7 @@
 <script id="templates/modal.html" type="text/ng-template">
     <ion-modal-view class="modal-bordeado">
         <ion-header-bar class="bar">
-            <h1 class="title" style="border-bottom: 2px solid #09b2bd;padding-bottom: 10px;">Paciente</h1>
+            <h1 class="title" style="border-bottom: 2px solid #09b2bd;padding-bottom: 10px;">Datos</h1>
             <button class="button button-clear button-primary" ng-click="cerrarModal()"><i style="color: black" class="fas fa-times"></i></button>
         </ion-header-bar>
         <ion-content overflow-scroll="false" class="padding">
@@ -160,7 +167,8 @@
                     <h4>Fecha Nacimiento: <b>{{cuenta.fechaNacimiento}}</b></h4>
                 </div>
                 <div style="text-align: center; margin-top: 20px">
-                    <button ng-if="tipo == 'DATOS'" class="btn button-credit" ng-click="nuevaFichaPaciente(cuenta)">Nueva ficha clínica</button>
+                    <button ng-if="(tipo == 'DATOS') && !(fisio == 'FIS')" class="btn button-credit" ng-click="nuevaFichaPaciente(cuenta)">Nueva ficha clínica</button>
+                    <button ng-if="tipo == 'DATOS'" class="btn button-credit" ng-click="verReservas(cuenta)">Ver reservas</button>
                 </div>
 
             </div>

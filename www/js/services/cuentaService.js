@@ -42,6 +42,14 @@ app.factory('pacienteService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        getHorariosFisio: function(dato) {
+            return $http({
+                url: urlApi + '/persona/' + dato.idEmpleado.idPersona + '/agenda?fecha=' + dato.fechaCadena + '&disponible=S',
+                method: "GET",
+                withCredentials: false
+            });
+        },
+
         filtroPaciente: function(dato) {
             if (!dato.apellido) {
                 return $http({
@@ -139,12 +147,48 @@ app.factory('reservasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        nuevaReserva: function(dato) {
+            return $http({
+                url: urlApi + '/reserva',
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'usuario': 'gustavo'
+                },
+                data: dato,
+                withCredentials: false
+            });
+        },
+        getReservasPaciente: function(dato) {
+            return $http({
+                url: urlApi + '/reserva',
+                params: { ejemplo: { idCliente: { idPersona: dato.idPersona } } },
+                method: "GET",
+                withCredentials: false
+            });
+        },
+        getReservasFisio: function(dato) {
+            return $http({
+                url: urlApi + '/reserva',
+                params: { ejemplo: { idEmpleado: { idPersona: dato.idPersona } } },
+                method: "GET",
+                withCredentials: false
+            });
+        },
         filtroReservas: function(dato) {
+            console.log('DATO DESDE SERVICIO', dato);
             if (dato.fechas.fechaDesdeCadena && dato.fechas.fechaHastaCadena) {
                 if (dato.idEmpleado) {
                     return $http({
                         url: urlApi + '/reserva',
                         params: { ejemplo: { idEmpleado: { idPersona: dato.idEmpleado.idPersona }, fechaDesdeCadena: dato.fechas.fechaDesdeCadena, fechaHastaCadena: dato.fechas.fechaHastaCadena } },
+                        method: "GET",
+                        withCredentials: false
+                    });
+                } else if (dato.idCliente) {
+                    return $http({
+                        url: urlApi + '/reserva',
+                        params: { ejemplo: { idCliente: { idPersona: dato.idCliente.idPersona }, fechaDesdeCadena: dato.fechas.fechaDesdeCadena, fechaHastaCadena: dato.fechas.fechaHastaCadena } },
                         method: "GET",
                         withCredentials: false
                     });
@@ -162,6 +206,15 @@ app.factory('reservasService', ['$http', function($http) {
                 return $http({
                     url: urlApi + '/reserva',
                     params: { ejemplo: { idEmpleado: { idPersona: dato.idEmpleado.idPersona } } },
+                    method: "GET",
+                    withCredentials: false
+                });
+            }
+
+            if (dato.idCliente && !dato.fechas.fechaDesdeCadena && !dato.fechas.fechaHastaCadena) {
+                return $http({
+                    url: urlApi + '/reserva',
+                    params: { ejemplo: { idCliente: { idPersona: dato.idCliente.idPersona } } },
                     method: "GET",
                     withCredentials: false
                 });

@@ -1,0 +1,21 @@
+<ion-view view-title="Fisioterapeutas">
+    <ion-content>
+        <div>
+            <div ng-show="fisios.length> 0" class="card card-extracto">
+                <div ng-repeat="fis in fisios" class="card-cuenta-extracto">
+                    <div class="row row-movimiento" style="padding: 0px;">
+                        <div class="col col-extractos">
+                            <h4 class="extracto-h4">Nombre: <b>{{fis.nombre}}</b></h4>
+                            <h4 class="extracto-h4">Apellido: <b>{{fis.apellido}}</b></h4>
+                        </div>
+                        <div class="col col-2">
+                            <button class="btn btn-light" ng-click="abrirModal(fis, 'DATOS', 'FIS')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

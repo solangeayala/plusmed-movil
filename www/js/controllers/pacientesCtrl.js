@@ -89,5 +89,11 @@ app.controller('pacientesCtrl', function($scope, $ionicModal, $timeout,
         console.log('nueva ficha paciente', paciente);
     };
 
+    $scope.verReservas = function(paciente) {
+        $localStorage.pacienteVerReservas = paciente;
+        $scope.cerrarModal();
+        $state.go('menu.reservas-paciente');
+    };
+
 
 })

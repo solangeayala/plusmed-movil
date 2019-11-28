@@ -10,7 +10,6 @@ var app = angular.module('plusmed.controllers', [])
     $rootScope.logueado = false;
     $scope.loginData = {};
 
-
     $rootScope.$on('IdleStart', function() {
         console.log('sesion expirada');
         if ($rootScope.existeModal.isShown()) {

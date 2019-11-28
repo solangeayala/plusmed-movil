@@ -1,4 +1,4 @@
-app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
+app.controller('seleccionFisio2Ctrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, loginService, UtilFactory) {
 
     $scope.filtro = {};
@@ -37,12 +37,7 @@ app.controller('seleccionFisioCtrl', function($scope, $ionicModal, $timeout,
         $ionicLoading.show();
         $localStorage.fisioSeleccion = serv;
         $ionicLoading.hide();
-        if ($localStorage.flagReservaFiltro == true) {
-            $localStorage.flagReservaFiltro == false;
-            $state.go('menu.filtro-fisio');
-        } else {
-            $state.go('menu.nueva-ficha');
-        }
+        $state.go('menu.nueva-ficha');
     };
 
     $('#hideshow').on('click', function(event) {

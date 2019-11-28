@@ -1,0 +1,59 @@
+<ion-view view-title="Nuevo Turno">
+    <ion-content>
+        <div>
+            <form class="form-cambiar-pass" name="formPaciente" ng-submit="nuevaReserva(formPaciente)">
+                <div class="list">
+                    <label class="item-input cambiar-pass-label">
+                        <span class="input-label label-pass">Paciente</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="cliente.nombre" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+                    <div ng-if="flagFicha == false">
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-paciente3">Seleccionar paciente</button>
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                            <span class="input-label label-pass">Fisioterapeuta</span>
+                        </label>
+                    <div ng-if="flagFicha == true && flagFisio == false">
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-fisio3">Seleccionar fisioterapeuta</button>
+                    </div>
+                    <div ng-if="flagFicha == true && flagFisio == true" style="border: 1px solid lightgray;">
+                        <input placeholder="Fisioterapeuta" class="input-cambiar-pass" type="text" name="apellido" ng-model="fisio.nombre" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                    </div>
+
+                    <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Seleccionar fecha</span>
+                    </label>
+                    <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
+                        <input class="input-filtro" ng-click="abrirModal()" ng-model="datos.fechaCadena" name="nombre" type="text">
+                    </div>
+
+                    <label ng-if="horarios" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Seleccionar hora de inicio</span>
+                    </label>
+                    <div ng-if="horarios" style="border: 1px solid lightgray;">
+                        <select class="input-filtro" ng-model="datos.horaInicioCadena" name="nombre" type="text">
+                            <option ng-repeat="init in horarios" value="{{init.horaInicioCadena}}">{{init.horaInicio}}</option>
+                        </select>
+                    </div>
+                    <label ng-if="horarios" class="item-input  cambiar-pass-label">
+                        <span class="input-label label-pass">Seleccionar hora de fin</span>
+                    </label>
+                    <div ng-if="horarios" style="border: 1px solid lightgray;">
+                        <select class="input-filtro" ng-model="datos.horaFinCadena" name="nombre" type="text">
+                            <option ng-repeat="init in horarios" value="{{init.horaFinCadena}}">{{init.horaFin}}</option>
+                        </select>
+                    </div>
+
+
+
+                </div>
+                <button type="submit" ng-disabled="formPaciente.$invalid" class="login100-form-btn">
+                   Crear ficha
+                </button>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

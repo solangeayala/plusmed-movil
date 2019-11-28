@@ -103,8 +103,8 @@ app.controller('turnosCtrl', function($scope, $ionicModal, $timeout,
         $scope.formatearFechaHasta();
     };
 
-    $('#hideshow').on('click', function(event) {
-        $('#card-filtro').toggle('show');
+    $('#hideshowTurnos').on('click', function(event) {
+        $('#card-filtroTurnos').toggle('show');
     });
 
     $scope.filtrar = function() {
@@ -130,5 +130,10 @@ app.controller('turnosCtrl', function($scope, $ionicModal, $timeout,
     $scope.porFisio = function() {
         $localStorage.flagReservaFiltro = true;
         $state.go('menu.filtro-fisio');
-    }
+    };
+
+    $scope.porCliente = function() {
+        $localStorage.flagReservaFiltro = true;
+        $state.go('menu.filtro-cliente');
+    };
 })
