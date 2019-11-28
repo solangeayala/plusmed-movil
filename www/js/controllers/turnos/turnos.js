@@ -47,10 +47,10 @@ app.controller('turnosCtrl', function($scope, $ionicModal, $timeout,
         flagDesde = true;
     };
 
-    $scope.verDetalles = function(ficha) {
+    /*$scope.verDetalles = function(ficha) {
         $localStorage.fichaDetalle = ficha;
         $state.go('menu.detalle-ficha');
-    };
+    };*/
 
     $scope.obtenerReservas = function() {
         $ionicLoading.show();

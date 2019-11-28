@@ -1,7 +1,7 @@
 function downloadFile(url) {
     var fileTransfer = new FileTransfer();
     var uri = encodeURI(url);
-    var filepath = "www/download/";
+    var filepath = "Fox-Terrier-de-Pelo-Duro.jpg";
 
     fileTransfer.onprogress = function(progressEvent) {
         if (progressEvent.lengthComputable) {
@@ -13,7 +13,7 @@ function downloadFile(url) {
     console.log('hola sol');
     fileTransfer.download(
         uri,
-        filePath,
+        filepath,
         function(entry) {
             console.log("download complete: " + entry.fullPath);
         },
@@ -33,7 +33,7 @@ function downloadFile(url) {
 app.controller('fichaNuevaCtrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, fichasService, UtilFactory) {
 
-    downloadFile('imagenes.jpg');
+    downloadFile("https://tuperrete.com/wp-content/uploads/2019/04/Fox-Terrier-de-Pelo-Duro.jpg");
 
     $scope.datos = {};
     $scope.flagFicha = false;

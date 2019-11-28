@@ -76,8 +76,8 @@ app.controller('fichasCtrl', function($scope, $ionicModal, $timeout,
         $scope.formatearFechaDesde();
     };
 
-    $('#hideshow').on('click', function(event) {
-        $('#card-filtro').toggle('show');
+    $('#hideshowFichas').on('click', function(event) {
+        $('#card-filtroFichas').toggle('show');
     });
 
     $scope.filtrar = function() {

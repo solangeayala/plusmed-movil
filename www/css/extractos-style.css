@@ -57,7 +57,7 @@
 
 .extracto-h1,
 .extracto-h2 {
-    font-family: Montserrat-Regular, sans-serif !important;
+    font-family: "Gudea", sans-serif !important;
 }
 
 .extracto-h1 {
@@ -202,7 +202,7 @@
 
 .extracto-h4 {
     font-size: 16px;
-    font-family: Montserrat-Regular, sans-serif;
+    font-family: "Gudea", sans-serif !important;
 }
 
 .modal-backdrop-bg {
@@ -219,7 +219,7 @@
     /*margin-left: 29%;*/
     color: white;
     margin-top: 31px;
-    font-family: Montserrat-Regular, sans-serif !important;
+    font-family: "Gudea", sans-serif !important;
     padding: 16px;
     font-size: 16px;
     border-radius: 8px;
@@ -238,7 +238,7 @@
 }
 
 .list-descargar h4 {
-    font-family: Montserrat-Regular, sans-serif !important;
+    font-family: "Gudea", sans-serif !important;
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 }
@@ -250,7 +250,7 @@
 .input-fecha-extracto {
     display: inline-block !important;
     font-size: 17px !important;
-    font-family: Montserrat-Regular, sans-serif;
+    font-family: "Gudea", sans-serif;
     font-weight: 600 !important;
     margin-left: 10px !important;
     border: 1px solid lightgray !important;

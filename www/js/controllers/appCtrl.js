@@ -107,11 +107,9 @@ var app = angular.module('plusmed.controllers', [])
                 console.log(result);
                 console.log('entra al fingerprintAuth');
                 if (result.withFingerprint) {
-                    if (result.password) {
-                        $scope.loginData.password = result.password;
-                        $localStorage.loginConHuella = true;
-                        $scope.login();
-                    }
+                    $localStorage.loginConHuella = true;
+                    //$scope.login();
+                    $scope.goMenuKP();
                 }
             }, function(error) {
                 if (error === FingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
@@ -122,7 +120,6 @@ var app = angular.module('plusmed.controllers', [])
             if (window.plugins.touchid) {
                 window.plugins.touchid.verify($scope.loginData.documento, "Presione el sensor para continuar.", function(password) {
                     $localStorage.loginConHuella = true;
-                    $scope.loginData.password = password;
                     $scope.login();
                 });
             }
