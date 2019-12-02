@@ -15,7 +15,7 @@
                     <label style="margin-top: 10px" class="item-input  cambiar-pass-label">
                         <span class="input-label label-pass">Fechas</span>
                     </label>
-                    <input class="input-filtro" ng-click="abrirModal()" ng-model="filtro.fechaDesdeCadena" name="nombre" type="text">
+                    <input class="input-filtro" ng-click="abrirModal()" ng-model="filtro.fechaDesdeCadena" placeholder="{{filtro.fechas.fechaDesdeCadena}}  -  {{filtro.fechas.fechaHastaCadena}}" name="nombre" type="text">
                 </div>
                 <button type="button" ng-click="filtrar()" class="login100-form-btn">
                     Filtrar reservas

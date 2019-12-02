@@ -32,15 +32,18 @@
                 <div ng-repeat="res in reservas" class="card-cuenta-extracto">
                     <div class="row row-movimiento" style="padding: 0px;">
                         <div class="col col-extractos">
-                            <h4 class="extracto-h4">Fecha de Reserva: <b>{{res.fechaHoraCreacion}}</b></h4>
+                            <h4 class="extracto-h4">Fecha de Reserva: <b>{{res.fecha}}</b></h4>
                             <h4 class="extracto-h4">Hora de Inicio: <b>{{res.horaInicio}}</b></h4>
                             <h4 class="extracto-h4">Hora de Fin: <b>{{res.horaFin}}</b></h4>
                             <h4 class="extracto-h4">Paciente: <b>{{res.idCliente.nombre}} {{res.idCliente.apellido}}</b></h4>
                             <h4 class="extracto-h4">Fisioterapeuta: <b>{{res.idEmpleado.nombre}} {{res.idEmpleado.apellido}}</b></h4>
                         </div>
                         <div class="col col-2">
-                            <button class="btn btn-light" ng-click="verDetalles(res)">
-                                <i class="fas fa-eye"></i>
+                            <button ng-if="res.flagAsistio == null" class="btn button-credit" ng-click="marcarAsistencia(res)">
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                            <button ng-if="res.flagAsistio != null" class="btn btn-success">
+                                <i class="fas fa-thumbs-up"></i>
                             </button>
                         </div>
                     </div>

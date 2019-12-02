@@ -184,6 +184,17 @@ app.factory('reservasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        marcarReserva: function(dato) {
+            return $http({
+                url: urlApi + '/reserva',
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: dato,
+                withCredentials: false
+            });
+        },
         getReservasPaciente: function(dato) {
             return $http({
                 url: urlApi + '/reserva',
