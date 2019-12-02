@@ -195,6 +195,13 @@ app.factory('reservasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        cancelarReserva: function(dato) {
+            return $http({
+                url: urlApi + '/reserva/' + dato,
+                method: "DELETE",
+                withCredentials: false
+            });
+        },
         getReservasPaciente: function(dato) {
             return $http({
                 url: urlApi + '/reserva',

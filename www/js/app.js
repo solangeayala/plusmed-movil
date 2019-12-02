@@ -453,6 +453,20 @@ angular.module('plusmed', [
             }
         })
 
+    .state('menu.detalle-turno', {
+        url: '/inicio/turno/detalles',
+        cache: false,
+        nativeTransitions: {
+            "type": "fade"
+        },
+        views: {
+            'menu': {
+                templateUrl: 'templates/turnos/detalle-turno.html',
+                controller: 'detalleTurnoCtrl'
+            }
+        }
+    })
+
     .state('menu.cambiarpass', {
         url: '/inicio/cambiarpass',
         cache: false,

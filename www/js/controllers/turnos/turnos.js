@@ -137,26 +137,8 @@ app.controller('turnosCtrl', function($scope, $ionicModal, $timeout,
         $state.go('menu.filtro-cliente');
     };
 
-    $scope.marcarAsistencia = function(turno) {
-        var param = {
-            "idReserva": turno.idReserva,
-            "observacion": "El paciente ya asistio a la consulta",
-            "flagAsistio": "S"
-        };
-        $ionicLoading.show();
-        reservasService.marcarReserva(param)
-            .then(function(response) {
-                    if (response.status == 200) {
-                        UtilFactory.aceptar('Operación exitosa', 'Se ha marcado como asistida la reserva');
-                        console.log(response);
-                    } else {
-                        UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
-                    }
-                    $ionicLoading.hide();
-                },
-                function(response) {
-                    UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
-                    $ionicLoading.hide();
-                });
+    $scope.verDetalles = function(turno) {
+        $localStorage.detalleReserva = turno;
+        $state.go('menu.detalle-turno');
     };
 })

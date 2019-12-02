@@ -1,0 +1,37 @@
+<ion-view view-title="Detalle de turno">
+    <ion-content>
+        <div style="height: 100px; text-align: center; padding: 10px 10px; background: #09b2bd;"></div>
+
+        <div class="cuenta-card-container">
+            <div id="card" style="height: auto !important">
+                <div>
+                    <h4 class="card-nombre" style="margin-bottom: 14px;"><b>{{turno.idCliente.nombre}} {{turno.idCliente.apellido}}</b></h4>
+                    <h4 class="card-numero" style="margin-bottom: 14px;"><b>Fecha: {{turno.fecha}}</b></h4>
+                    <h4 class="card-numero" style="margin-bottom: 14px;"><b>Hora: {{turno.horaInicio}} - {{turno.horaFin}}</b></h4>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button ng-if="turno.flagAsistio == null" style="margin-top: 20px;" class="btn btn-success" ng-click="marcarAsistencia()">
+                <i class="fas fa-check-circle" style="margin-right: 10px"></i>Marcar asistencia
+            </button>
+        </div>
+        <div style="text-align: center;">
+            <button style="margin-top: 20px;" class="btn btn-danger" ng-click="cancelar()">
+                <i class="fas fa-times-circle" style="margin-right: 10px"></i>Cancelar reserva
+            </button>
+        </div>
+        <div style="margin-top: 30px; margin-left: 20px">
+            <div class="card-cuenta-extracto">
+                <div class="row row-movimiento" style="padding: 0px;">
+                    <div class="col col-extractos">
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Local: <b>{{turno.idLocal.nombre}}</b></h4>
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Fisioterapeuta: <b>{{turno.idEmpleado.nombre}}</b></h4>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
