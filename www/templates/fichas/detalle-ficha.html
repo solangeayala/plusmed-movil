@@ -62,19 +62,15 @@
             </div>
         </div>
         <div ng-if="archivos.length > 0" style="margin-top: 30px; margin-left: 20px">
-            <div class="card-cuenta-extracto">
-                <h4>Archivos</h4>
+            <h4 style="margin-bottom: 15px">Archivos</h4>
+            <div class="card-cuenta-extracto" ng-repeat="arch in archivos">
+
                 <div class="row row-movimiento" style="padding: 0px;">
-                    <div class="col col-extractos">
-                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Fecha de consulta: <b>{{ficha.fechaHoraCadena}}</b></h4>
-                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Local: <b>{{ficha.idLocal.nombre}}</b></h4>
-                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Servicio: <b>{{ficha.idTipoProducto.descripcion}}</b></h4>
-                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Fisioterapeuta: <b>{{ficha.idEmpleado.nombre}}</b></h4>
-                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Observación: <b>{{ficha.observacion}}</b>
-                            <button style="float: right; margin-top: -10px;" class="btn btn-light" id="hideshow1">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </h4>
+                    <div class="col col-extractos" style="padding: 0px;">
+                        <h4 class="extracto-h4" style="margin-bottom: 5px;">Nombre: <b>{{arch.nombre}}</b></h4>
+                        <button ng-click="eliminarArchivo(arch)" style="float: right; margin-top: -25px; margin-right: 20px; padding: 2px 6px" class="btn btn-danger" id="hideshow1">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                 </div>
             </div>

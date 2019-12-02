@@ -123,6 +123,13 @@ app.factory('fichasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        deleteArchivoFicha: function(dato) {
+            return $http({
+                url: urlApi + '/fichaArchivo/' + dato,
+                method: "DELETE",
+                withCredentials: false
+            });
+        },
         filtroFichas: function(dato) {
             if (dato.fechaDesdeCadena) {
                 return $http({

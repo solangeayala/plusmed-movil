@@ -10,7 +10,7 @@
                         <input placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="cliente.nombre" required>
                     </div>
                     <div ng-if="flagFicha == false">
-                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-paciente">Seleccionar paciente</button>
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-paciente2">Seleccionar paciente</button>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
@@ -34,7 +34,7 @@
                             <span class="input-label label-pass">Fisioterapeuta</span>
                         </label>
                     <div ng-if="flagFicha == true && flagFisio == false">
-                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-fisio">Seleccionar fisioterapeuta</button>
+                        <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-fisio2">Seleccionar fisioterapeuta</button>
                     </div>
                     <div ng-if="flagFicha == true && flagFisio == true" style="border: 1px solid lightgray;">
                         <input placeholder="Fisioterapeuta" class="input-cambiar-pass" type="text" name="apellido" ng-model="fisio.nombre" ng-minlength="1" required>

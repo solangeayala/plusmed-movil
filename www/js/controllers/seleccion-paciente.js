@@ -35,7 +35,7 @@ app.controller('seleccionPacienteCtrl', function($scope, $ionicModal, $timeout,
 
     $scope.seleccionarPaciente = function(paciente) {
         $ionicLoading.show();
-        $localStorage.pacienteSeleccion = paciente;
+        $localStorage.pacienteSeleccion2 = paciente;
         $ionicLoading.hide();
         if ($localStorage.flagReservaFiltro == true) {
             $state.go('menu.filtro-cliente');

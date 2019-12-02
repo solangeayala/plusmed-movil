@@ -35,15 +35,15 @@ app.controller('fichaNuevaCtrl', function($scope, $ionicModal, $timeout,
         delete $localStorage.pacienteFichaNueva;
     }
 
-    if ($localStorage.pacienteSeleccion) {
+    if ($localStorage.pacienteSeleccion2) {
         console.log('PACIENTE seleccionado');
         $scope.flagFicha = true;
-        $scope.cliente = $localStorage.pacienteSeleccion;
+        $scope.cliente = $localStorage.pacienteSeleccion2;
         $scope.datos.idCliente = {
             "idPersona": $scope.cliente.idPersona
         };
         $localStorage.auxpaciente = $scope.cliente;
-        delete $localStorage.pacienteSeleccion;
+        delete $localStorage.pacienteSeleccion2;
     }
 
     if ($localStorage.servicioSeleccion) {
