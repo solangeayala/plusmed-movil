@@ -93,6 +93,17 @@ app.factory('fichasService', ['$http', function($http) {
                 withCredentials: false
             });
         },
+        archFicha: function(dato) {
+            return $http({
+                url: urlApi + '/fichaArchivo/archivo',
+                method: "POST",
+                data: dato,
+                headers: { 'Content-Type': undefined },
+                //prevents serializing payload.  don't do it.
+                transformRequest: angular.identity,
+                withCredentials: false
+            });
+        },
         modifFicha: function(dato) {
             return $http({
                 url: urlApi + '/fichaClinica',
@@ -102,6 +113,13 @@ app.factory('fichasService', ['$http', function($http) {
                     'usuario': 'gustavo'
                 },
                 data: dato,
+                withCredentials: false
+            });
+        },
+        getArchivosFicha: function(dato) {
+            return $http({
+                url: urlApi + '/fichaArchivo?idFichaClinica=' + dato,
+                method: "GET",
                 withCredentials: false
             });
         },

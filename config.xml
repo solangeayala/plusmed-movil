@@ -116,5 +116,6 @@
     <plugin name="cordova-plugin-android-fingerprint-auth" spec="^1.4.0" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-filechooser" spec="^1.2.0" />
     <plugin name="com.telerik.plugins.nativepagetransitions" spec="0.6.5" />
 </widget>

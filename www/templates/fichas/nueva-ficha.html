@@ -1,13 +1,13 @@
 <ion-view view-title="Nueva Ficha">
     <ion-content>
         <div>
-            <form class="form-cambiar-pass" name="formPaciente" ng-submit="nuevaFicha(formPaciente)">
+            <form class="form-cambiar-pass">
                 <div class="list">
                     <label class="item-input cambiar-pass-label">
                         <span class="input-label label-pass">Paciente</span>
                     </label>
                     <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="cliente.nombre" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar nombre" class="input-cambiar-pass" type="text" name="nombre" ng-model="cliente.nombre" required>
                     </div>
                     <div ng-if="flagFicha == false">
                         <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-paciente">Seleccionar paciente</button>
@@ -17,7 +17,7 @@
                         <span class="input-label label-pass">Apellido</span>
                     </label>
                     <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="cliente.apellido" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="cliente.apellido" ng-minlength="1" required>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
@@ -27,7 +27,7 @@
                         <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-servicio">Seleccionar servicio</button>
                     </div>
                     <div ng-if="flagFicha == true && flagServ == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="producto.nombre" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar apellido" class="input-cambiar-pass" type="text" name="apellido" ng-model="producto.nombre" ng-minlength="1" required>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
@@ -37,34 +37,32 @@
                         <button class="btn btn-light btn-selec" ui-sref="menu.seleccion-fisio">Seleccionar fisioterapeuta</button>
                     </div>
                     <div ng-if="flagFicha == true && flagFisio == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Fisioterapeuta" class="input-cambiar-pass" type="text" name="apellido" ng-model="fisio.nombre" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Fisioterapeuta" class="input-cambiar-pass" type="text" name="apellido" ng-model="fisio.nombre" ng-minlength="1" required>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
                         <span class="input-label label-pass">Motivo</span>
                     </label>
                     <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar motivo" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.motivoConsulta" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar motivo" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.motivoConsulta" ng-minlength="1" required>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
                         <span class="input-label label-pass">Diagnóstico</span>
                     </label>
                     <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar diagnóstico" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.diagnostico" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar diagnóstico" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.diagnostico" ng-minlength="1" required>
                     </div>
 
                     <label ng-if="flagFicha == true" class="item-input  cambiar-pass-label">
                         <span class="input-label label-pass">Observación</span>
                     </label>
                     <div ng-if="flagFicha == true" style="border: 1px solid lightgray;">
-                        <input placeholder="Ingresar observacion" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.observacion" ng-minlength="1" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+                        <input placeholder="Ingresar observacion" class="input-cambiar-pass" type="text" name="apellido" ng-model="datos.observacion" ng-minlength="1" required>
                     </div>
 
-
-
                 </div>
-                <button type="submit" ng-disabled="formPaciente.$invalid" class="login100-form-btn">
+                <button type="button" ng-click="nuevaFicha()" class="login100-form-btn">
                    Crear ficha
                 </button>
             </form>

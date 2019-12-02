@@ -1,39 +1,7 @@
-function downloadFile(url) {
-    var fileTransfer = new FileTransfer();
-    var uri = encodeURI(url);
-    var filepath = "Fox-Terrier-de-Pelo-Duro.jpg";
-
-    fileTransfer.onprogress = function(progressEvent) {
-        if (progressEvent.lengthComputable) {
-            loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-        } else {
-            loadingStatus.increment();
-        }
-    };
-    console.log('hola sol');
-    fileTransfer.download(
-        uri,
-        filepath,
-        function(entry) {
-            console.log("download complete: " + entry.fullPath);
-        },
-        function(error) {
-            console.log("download error source " + error.source);
-            console.log("download error target " + error.target);
-            console.log("upload error code" + error.code);
-        },
-        false, {
-            headers: {
-
-            }
-        }
-    );
-}
-
 app.controller('fichaNuevaCtrl', function($scope, $ionicModal, $timeout,
     $ionicLoading, $state, $rootScope, $localStorage, fichasService, UtilFactory) {
 
-    downloadFile("https://tuperrete.com/wp-content/uploads/2019/04/Fox-Terrier-de-Pelo-Duro.jpg");
+    //downloadFile("http://www.pol.una.py/archivos/Horario_clases_examenes_Segundo_Periodo_17102019.xls");
 
     $scope.datos = {};
     $scope.flagFicha = false;

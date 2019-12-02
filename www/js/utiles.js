@@ -131,25 +131,6 @@ app.directive('autoSlash', [function() {
 }]);
 
 
-
-
-function formatear(num) {
-    if (num == null) {
-        return ('');
-    } else {
-        const separador = '.';
-        num += '';
-        const splitStr = num.split('.');
-        let splitLeft = splitStr[0];
-
-        const regx = /(\d+)(\d{3})/;
-        while (regx.test(splitLeft)) {
-            splitLeft = splitLeft.replace(regx, `$1${separador}$2`);
-        }
-        return splitLeft;
-    }
-};
-
 function generarFechas() {
     var listFechas = [];
     var today = new Date();
@@ -243,20 +224,6 @@ function getMesExtracto(input) {
 function getAnhoExtracto(input) {
     var year = parseInt(input.slice(0, 4));
     return year;
-}
-
-function format(input) {
-    var num = input.value.replace(/[^0-9]/g, '');
-    if (!isNaN(num)) {
-        num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g, '$1.');
-        num = num.split('').reverse().join('').replace(/^[\.]/, '');
-        input.value = num;
-    }
-}
-
-function formatoMonto(input) {
-    monto = input.replace(/\./g, '');
-    return parseInt(monto);
 }
 
 function getFecha() {
