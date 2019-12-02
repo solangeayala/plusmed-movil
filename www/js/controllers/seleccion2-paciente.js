@@ -38,7 +38,6 @@ app.controller('seleccionPaciente2Ctrl', function($scope, $ionicModal, $timeout,
         $localStorage.pacienteSeleccion = paciente;
         $ionicLoading.hide();
         $state.go('menu.nueva-ficha');
-        delete $localStorage.pacienteSeleccion;
     };
 
     $('#hideshow').on('click', function(event) {

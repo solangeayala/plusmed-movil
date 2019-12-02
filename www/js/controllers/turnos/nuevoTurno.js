@@ -37,6 +37,7 @@ app.controller('nuevoTurnoCtrl', function($scope, $ionicModal, $timeout,
         $scope.datos.idCliente = {
             "idPersona": $scope.cliente.idPersona
         };
+        delete $localStorage.auxpacienteTurno;
     }
 
     if ($localStorage.pacienteSeleccionTurno) {
@@ -118,7 +119,7 @@ app.controller('nuevoTurnoCtrl', function($scope, $ionicModal, $timeout,
                     $ionicLoading.hide();
                 },
                 function(response) {
-                    UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
+                    UtilFactory.aceptar(response.data);
                     $ionicLoading.hide();
                 });
     };

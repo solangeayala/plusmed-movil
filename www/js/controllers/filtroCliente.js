@@ -49,15 +49,15 @@ app.controller('filtroClienteCtrl', function($scope, $ionicModal, $timeout,
         flagDesde = true;
     };
 
-    if ($localStorage.pacienteSeleccion) {
+    if ($localStorage.pacienteSeleccion2) {
         console.log('PACIENTE seleccionado');
         $scope.flagCliente = true;
-        $scope.cliente = $localStorage.pacienteSeleccion;
+        $scope.cliente = $localStorage.pacienteSeleccion2;
         $scope.filtro.idCliente = {
             "idPersona": $scope.cliente.idPersona
         };
         $localStorage.auxcliente = $scope.cliente;
-        delete $localStorage.pacienteSeleccion;
+        delete $localStorage.pacienteSeleccion2;
     }
 
     $ionicModal.fromTemplateUrl('templates/modal-fechas.html', function($ionicModal) {
@@ -92,7 +92,6 @@ app.controller('filtroClienteCtrl', function($scope, $ionicModal, $timeout,
                     if (response.status == 200) {
                         $localStorage.reservasFiltro = response.data.lista;
                         $state.go('menu.turnos');
-                        // $scope.reservas = response.data.lista;
                         console.log(response);
                     } else {
                         UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');

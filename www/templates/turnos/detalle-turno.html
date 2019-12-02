@@ -15,9 +15,12 @@
             <button ng-if="turno.flagAsistio == null" style="margin-top: 20px;" class="btn btn-success" ng-click="marcarAsistencia()">
                 <i class="fas fa-check-circle" style="margin-right: 10px"></i>Marcar asistencia
             </button>
+            <button ng-if="turno.flagAsistio != null" style="margin-top: 20px;" class="btn btn-success">
+                <i class="fas fa-thumbs-up" style="margin-right: 10px"></i>El paciente ya asistió a la reserva
+            </button>
         </div>
         <div style="text-align: center;">
-            <button style="margin-top: 20px;" class="btn btn-danger" ng-click="cancelar()">
+            <button ng-if="turno.flagAsistio == null" style="margin-top: 20px;" class="btn btn-danger" ng-click="cancelar()">
                 <i class="fas fa-times-circle" style="margin-right: 10px"></i>Cancelar reserva
             </button>
         </div>

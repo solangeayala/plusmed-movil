@@ -1,5 +1,5 @@
 app.controller('detalleTurnoCtrl', function($scope, $ionicModal, $timeout,
-    $ionicLoading, $state, $rootScope, $localStorage, pacienteService, reservasService, UtilFactory) {
+    $ionicLoading, $state, $rootScope, $localStorage, $window, pacienteService, reservasService, UtilFactory) {
 
     $scope.turno = $localStorage.detalleReserva;
 
@@ -31,6 +31,7 @@ app.controller('detalleTurnoCtrl', function($scope, $ionicModal, $timeout,
             .then(function(response) {
                     if (response.status == 200) {
                         UtilFactory.aceptar('Operación exitosa', 'Se ha eliminado la reserva');
+
                         $state.go('menu.turnos');
                         console.log(response);
                     } else {
@@ -39,7 +40,7 @@ app.controller('detalleTurnoCtrl', function($scope, $ionicModal, $timeout,
                     $ionicLoading.hide();
                 },
                 function(response) {
-                    UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
+                    UtilFactory.aceptar(response.data);
                     $ionicLoading.hide();
                 });
     };
@@ -56,6 +57,7 @@ app.controller('detalleTurnoCtrl', function($scope, $ionicModal, $timeout,
             .then(function(response) {
                     if (response.status == 200) {
                         UtilFactory.aceptar('Operación exitosa', 'Se ha marcado como asistida la reserva');
+                        $window.location.reload(true);
                         console.log(response);
                     } else {
                         UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
@@ -63,7 +65,7 @@ app.controller('detalleTurnoCtrl', function($scope, $ionicModal, $timeout,
                     $ionicLoading.hide();
                 },
                 function(response) {
-                    UtilFactory.aceptar('Atención', 'Ha ocurrido un error, intente nuevamente');
+                    UtilFactory.aceptar(response.data);
                     $ionicLoading.hide();
                 });
     };

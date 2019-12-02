@@ -254,7 +254,7 @@ app.factory('reservasService', ['$http', function($http) {
                 });
             }
 
-            if (dato.idCliente && !dato.fechas.fechaDesdeCadena && !dato.fechas.fechaHastaCadena) {
+            if (dato.idCliente) {
                 return $http({
                     url: urlApi + '/reserva',
                     params: { ejemplo: { idCliente: { idPersona: dato.idCliente.idPersona } } },
